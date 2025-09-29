@@ -1,0 +1,49 @@
+---
+sidebar: sidebar 
+permalink: scpivs44_modify_the_network_settings.html 
+keywords:  
+summary: Sie können die Netzwerkeinstellungen ändern, die im SnapCenter Plug-in for VMware vSphere konfiguriert sind.  Diese Einstellungen werden vom Plug-In für den Zugriff auf vCenter verwendet. 
+---
+= Ändern Sie die Netzwerkeinstellungen
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Sie können die Netzwerkeinstellungen ändern, die im SnapCenter Plug-in for VMware vSphere konfiguriert sind.  Diese Einstellungen werden vom Plug-In für den Zugriff auf vCenter verwendet.
+
+.Bevor Sie beginnen
+Sie müssen die IP-Adresse und die Anmeldeinformationen für das SnapCenter Plug-in for VMware vSphere Verwaltungs-GUI kennen. Sie müssen sich auch das von der Wartungskonsole generierte MFA-Token notieren.
+
+* Die IP-Adresse wurde angezeigt, als das SnapCenter Plug-in for VMware vSphere bereitgestellt wurde.
+* Verwenden Sie die Anmeldeinformationen, die Sie während der Bereitstellung des SnapCenter Plug-in for VMware vSphere erhalten haben oder die später geändert wurden.
+* Generieren Sie mithilfe der Systemkonfigurationsoptionen der Wartungskonsole ein 6-stelliges MFA-Token.
+
+
+.Schritte
+. Melden Sie sich beim SnapCenter Plug-in for VMware vSphere Verwaltungs-GUI an.
++
+Verwenden Sie das Format `\https://<appliance-IP-address>:8080`
+
+. Wählen Sie das Symbol „Einstellungen“ in der oberen Symbolleiste.
++
+image:scpivs44_image31.png["SnapCenter Plug-in for VMware vSphere Verwaltungs-GUI"]
+
+. Wählen Sie auf der Seite *Einstellungen* im Abschnitt *Netzwerkeinstellungen* die *IPv4*- oder *IPv6*-Adresse aus und wählen Sie dann *Bearbeiten*.
++
+Geben Sie die neuen Informationen ein und wählen Sie *Speichern*.
+
+. Wenn Sie eine Netzwerkeinstellung entfernen, gehen Sie wie folgt vor:
++
+** IPv4: Geben Sie im Feld *IP-Adresse* ein `0.0.0.0` und wählen Sie dann *Speichern*.
+** IPv6: Geben Sie im Feld *IP-Adresse* Folgendes ein: `: :0` und wählen Sie dann *Speichern*.
+
+
+
+
+
+NOTE: Wenn Sie sowohl IPv4- als auch IPv6-Adressen verwenden, können Sie nicht beide Netzwerkeinstellungen entfernen.  Das verbleibende Netzwerk muss die Felder „DNS-Server“ und „Suchdomänen“ angeben.

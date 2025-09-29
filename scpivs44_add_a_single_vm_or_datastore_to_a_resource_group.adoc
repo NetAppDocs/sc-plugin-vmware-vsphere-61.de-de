@@ -1,0 +1,35 @@
+---
+sidebar: sidebar 
+permalink: scpivs44_add_a_single_vm_or_datastore_to_a_resource_group.html 
+keywords:  
+summary: Sie können schnell eine einzelne VM oder einen einzelnen Datenspeicher zu jeder vorhandenen Ressourcengruppe hinzufügen, die vom SnapCenter Plug-in for VMware vSphere verwaltet wird. 
+---
+= Hinzufügen einer einzelnen VM oder eines Datenspeichers zu einer Ressourcengruppe
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Sie können schnell eine einzelne VM oder einen einzelnen Datenspeicher zu jeder vorhandenen Ressourcengruppe hinzufügen, die vom SnapCenter Plug-in for VMware vSphere verwaltet wird.
+
+.Informationen zu diesem Vorgang
+Sie können SAN- und NAS-Datenspeicher hinzufügen, jedoch keine VSAN- oder VVOL-Datenspeicher.
+
+.Schritte
+. Wählen Sie in der GUI des vSphere-Clients *Menü* in der Symbolleiste aus und navigieren Sie zu der VM oder dem Datenspeicher, den Sie hinzufügen möchten.
+. Klicken Sie im linken Navigationsbereich mit der rechten Maustaste auf die VM oder den Datenspeicher und wählen Sie aus der sekundären Dropdownliste „SnapCenter Plug-in for VMware vSphere“ > „Zur Ressourcengruppe hinzufügen“ aus.
++
+Das System prüft zunächst, ob SnapCenter das Speichersystem, auf dem sich die ausgewählte VM befindet, verwaltet und mit diesem kompatibel ist, und zeigt dann die Seite *Zur Ressourcengruppe hinzufügen* an.  Wenn die Nachricht `SnapCenter Compatibility Error` angezeigt wird, ist die ausgewählte VM nicht mit SnapCenter kompatibel und Sie müssen zuerst die entsprechende Speicher-VM zu SnapCenter hinzufügen.
+
+. Wählen Sie auf der Seite *Zur Ressourcengruppe hinzufügen* eine Ressourcengruppe aus und klicken Sie dann auf *OK*.
++
+Wenn Sie *OK* auswählen, überprüft das System zunächst, ob SnapCenter den Speicher verwaltet und mit ihm kompatibel ist, auf dem sich die ausgewählten VMs oder Datenspeicher befinden.
+
++
+Wenn die Nachricht `Selected <resource-name> is not SnapCenter compatible` angezeigt wird, ist eine ausgewählte VM oder ein ausgewählter Datenspeicher nicht mit SnapCenter kompatibel. Weitere Informationen finden Sie unter link:scpivs44_create_resource_groups_for_vms_and_datastores.html#manage-compatibility-check-failures["Verwalten von Fehlern bei der Kompatibilitätsprüfung"] für weitere Informationen.
+
+

@@ -1,0 +1,272 @@
+---
+settings:
+  name: SnapCenter Plug-in for VMware vSphere
+  internal:
+    pdf_enabled: true
+  prod:
+    pdf_enabled: true
+    harmony_enabled: false
+  downlevel: true
+  versions:
+  - version-number: '6.1'
+    url: "/sc-plugin-vmware-vsphere-61"
+  - version-number: '6.2'
+    url: "/sc-plugin-vmware-vsphere"
+  - version-number: '6.0'
+    url: "/sc-plugin-vmware-vsphere-60"
+  - version-number: '5.0'
+    url: "/sc-plugin-vmware-vsphere-50"
+  - version-number: '4.9'
+    url: "/sc-plugin-vmware-vsphere-49"
+  - version-number: '4.8'
+    url: "/sc-plugin-vmware-vsphere-48"
+  - version-number: '4.7'
+    url: "/sc-plugin-vmware-vsphere-47"
+  - version-number: '4.6'
+    url: "/sc-plugin-vmware-vsphere-46"
+  - version-number: '4.5'
+    url: "/sc-plugin-vmware-vsphere-45"
+  langs: de-de,us-en,es-es,fr-fr,it-it,pt-br,ja-jp,ko-kr,zh-cn,zh-tw
+sidebar:
+  entries:
+  - title: SnapCenter Plug-in for VMware vSphere 6.1
+    url: "/index.html"
+  - title: Versionshinweise
+    entries:
+    - title: Versionshinweise zum SnapCenter Plug-in for VMware vSphere
+      url: "/scpivs44_release_notes.html"
+    - title: Was ist neu im SnapCenter Plug-in for VMware vSphere 6.1
+      url: "/scv_releasenotes_whats_new.html"
+    - title: Upgrade-Pfade
+      url: "/scv_rn_upgrade_paths.html"
+  - title: Konzepte
+    entries:
+    - title: Produktübersicht
+      url: "/scpivs44_concepts_overview.html"
+    - title: Übersicht über die verschiedenen SnapCenter -GUIs
+      url: "/scpivs44_overview_of_different_snapcenter_guis.html"
+    - title: Lizenzierung
+      url: "/scpivs44_licensing.html"
+    - title: Rollenbasierte Zugriffskontrolle (RBAC)
+      url: "/scpivs44_role_based_access_control.html"
+    - title: Arten von RBAC für SnapCenter Plug-in for VMware vSphere Benutzer
+      url: "/scpivs44_types_of_rbac_for_snapcenter_users.html"
+    - title: ONTAP RBAC-Funktionen im SnapCenter Plug-in for VMware vSphere
+      url: "/scpivs44_ontap_rbac_features_in_snapcenter.html"
+    - title: Vordefinierte Rollen im SnapCenter Plug-in for VMware vSphere
+      url: "/scpivs44_predefined_roles_packaged_with_snapcenter.html"
+    - title: So konfigurieren Sie ONTAP RBAC für das SnapCenter Plug-in for VMware
+        vSphere
+      url: "/scpivs44_how_to_configure_ontap_rbac_for_snapcenter_plug-in_for_vmware_vsphere.html"
+  - title: Erste Schritte
+    entries:
+    - title: Bereitstellungsübersicht
+      url: "/scpivs44_get_started_overview.html"
+    - title: Bereitstellungsworkflow für neue Benutzer
+      url: scpivs44_deployment_workflow_for_new_users.html
+    - title: Bereitstellungsworkflow für vorhandene Benutzer
+      url: "/scpivs44_deployment_workflow_for_existing_users.html"
+    - title: Voraussetzungen für die Bereitstellung von SCV
+      entries:
+      - title: Bereitstellungsplanung und -anforderungen
+        url: "/scpivs44_deployment_planning_and_requirements.html"
+      - title: ONTAP -Berechtigungen erforderlich
+        url: "/scpivs44_minimum_ontap_privileges_required.html"
+      - title: Mindestens erforderliche vCenter-Berechtigungen
+        url: "/scpivs44_minimum_vcenter_privileges_required.html"
+    - title: Laden Sie die Open Virtual Appliance (OVA) herunter
+      url: "/scpivs44_download_the_ova_open_virtual_appliance.html"
+    - title: Bereitstellen des SnapCenter Plug-in for VMware vSphere
+      url: "/scpivs44_deploy_snapcenter_plug-in_for_vmware_vsphere.html"
+    - title: Nach der Bereitstellung erforderliche Vorgänge und Probleme
+      url: "/scpivs44_post_deployment_required_operations_and_issues.html"
+    - title: Melden Sie sich beim SnapCenter VMware vSphere-Client an
+      url: "/scpivs44_log_in_to_the_snapcenter_vmware_vsphere_web_client.html"
+  - title: Schnellstart
+    entries:
+    - title: Überblick
+      url: "/scpivs44_quick_start_overview.html"
+    - title: Bereitstellen des SnapCenter Plug-in for VMware vSphere
+      url: "/scpivs44_deploy_snapcenter_plug-in_for_vmware_vsphere_01.html"
+    - title: Speicher hinzufügen
+      url: "/scpivs44_add_storage.html"
+    - title: Erstellen von Sicherungsrichtlinien
+      url: "/scpivs44_create_backup_policies.html"
+    - title: Erstellen von Ressourcengruppen
+      url: "/scpivs44_create_resource_groups.html"
+  - title: Überwachen und berichten
+    entries:
+    - title: Statusinformationen anzeigen
+      url: "/scpivs44_view_status_information.html"
+    - title: Überwachen von Jobs
+      url: "/scpivs44_monitor_jobs.html"
+    - title: Jobprotokolle herunterladen
+      url: "/scpivs44_download_job_logs.html"
+    - title: Zugriffsberichte
+      url: "/scpivs44_access_reports.html"
+    - title: Generieren Sie ein Support-Paket aus dem SnapCenter Plug-in for VMware
+        vSphere -GUI
+      url: "/scpivs44_generate_a_support_bundle_from_the_snapcenter_plug-in_for_vmware_vsphere_gui.html"
+    - title: Generieren Sie ein Support-Paket aus der Wartungskonsole
+      url: "/scpivs44_generate_a_support_bundle_from_the_maintenance_console.html"
+    - title: Überwachungsprotokolle
+      url: "/scv48_audit_logs.html"
+  - title: Speicher verwalten
+    entries:
+    - title: Speicher hinzufügen
+      url: "/scpivs44_add_storage_01.html"
+    - title: Speicher-VMs verwalten – ändern, umbenennen, entfernen
+      url: "/scpivs44_manage_storage_systems.html"
+    - title: Ändern Sie das konfigurierte Speicher-Timeout
+      url: "/scpivs44_modify_storage_timeout.html"
+  - title: Daten schützen
+    entries:
+    - title: Datenschutz-Workflow
+      url: "/scpivs44_protect_data_overview.html"
+    - title: Backups anzeigen
+      url: "/scpivs44_view_vm_and_datastore_backups.html"
+    - title: Erstellen von Sicherungsrichtlinien
+      url: "/scpivs44_create_backup_policies_for_vms_and_datastores.html"
+    - title: Erstellen von Ressourcengruppen
+      url: "/scpivs44_create_resource_groups_for_vms_and_datastores.html"
+    - title: Präskripte und Postskripte
+      url: "/scpivs44_prescripts_and_postscripts.html"
+    - title: Hinzufügen einer einzelnen VM oder eines Datenspeichers zu einer Ressourcengruppe
+      url: "/scpivs44_add_a_single_vm_or_datastore_to_a_resource_group.html"
+    - title: Hinzufügen mehrerer VMs und Datenspeicher zu einer Ressourcengruppe
+      url: "/scpivs44_add_multiple_vms_and_datastores_to_a_resource_group.html"
+    - title: Speicher umbenennen
+      url: "/rename_storage.html"
+    - title: Sichern Sie Ressourcengruppen bei Bedarf
+      url: "/scpivs44_back_up_resource_groups_on_demand.html"
+    - title: Sichern Sie die MySQL-Datenbank
+      url: "/scpivs44_back_up_the_snapcenter_plug-in_for_vmware_vsphere_mysql_database.html"
+    - title: Ressourcengruppen verwalten – anhalten, fortsetzen, ändern, löschen
+      url: "/scpivs44_manage_resource_groups.html"
+    - title: Richtlinien verwalten – trennen, ändern, löschen
+      url: "/scpivs44_manage_policies.html"
+    - title: Backups verwalten – umbenennen, löschen
+      url: "/scpivs44_manage_backups.html"
+  - title: Mounten und Unmounten von Datenspeichern
+    entries:
+    - title: Mounten Sie ein Backup
+      url: "/scpivs44_mount_a_backup.html"
+    - title: Ein Backup aushängen
+      url: "/scpivs44_unmount_a_backup.html"
+  - title: Sicherungen wiederherstellen
+    entries:
+    - title: Überblick
+      url: "/scpivs44_restore_from_backups_overview.html"
+    - title: So werden Wiederherstellungsvorgänge ausgeführt
+      url: "/scpivs44_how_restore_operations_are_performed.html"
+    - title: Suche nach Backups
+      url: "/scpivs44_search_for_backups.html"
+    - title: Wiederherstellen von VMs aus Backups
+      url: "/scpivs44_restore_vms_from_backups.html"
+    - title: Wiederherstellen gelöschter VMs aus Backups
+      url: "/scpivs44_restore_deleted_vms_from_backups.html"
+    - title: Wiederherstellen von VMDKs aus Backups
+      url: "/scpivs44_restore_vmdks_from_backups.html"
+    - title: Stellen Sie die neueste Sicherung der MySQL-Datenbank wieder her
+      url: "/scpivs44_restore_the_most_recent_backup_of_the_mysql_database.html"
+    - title: Stellen Sie eine bestimmte Sicherung der MySQL-Datenbank wieder her
+      url: "/scpivs44_restore_a_specific_backup_of_the_mysql_database.html"
+  - title: Anhängen und Trennen von VMDKs
+    entries:
+    - title: VMDKs an eine VM oder vVol-VM anhängen
+      url: "/scpivs44_attach_vmdks_to_a_vm.html"
+    - title: Trennen einer virtuellen Festplatte
+      url: "/scpivs44_detach_a_virtual_disk.html"
+  - title: Wiederherstellen von Gastdateien und -ordnern
+    entries:
+    - title: Arbeitsablauf, Voraussetzungen und Einschränkungen
+      url: "/scpivs44_restore_guest_files_and_folders_overview.html"
+    - title: Wiederherstellen von Gastdateien und -ordnern aus VMDKs
+      url: "/scpivs44_restore_guest_files_and_folders_from_vmdks.html"
+    - title: Einrichten von Proxy-VMs für Wiederherstellungsvorgänge
+      url: "/scpivs44_set_up_proxy_vms_for_restore_operations.html"
+    - title: Konfigurieren Sie Anmeldeinformationen für die Wiederherstellung von
+        VM-Gastdateien
+      url: "/scpivs44_configure_credentials_for_vm_guest_file_restores.html"
+    - title: Verlängern Sie die Dauer einer Gastdateiwiederherstellungssitzung
+      url: "/scpivs44_extend_the_time_of_a_guest_file_restore_session.html"
+    - title: Mögliche Szenarien zur Wiederherstellung von Gastdateien
+      url: "/scpivs44_guest_file_restore_scenarios_you_might_encounter.html"
+  - title: Verwalten des SnapCenter Plug-in for VMware vSphere -Geräte
+    entries:
+    - title: Starten Sie den VMware vSphere-Clientdienst neu
+      url: "/scpivs44_restart_the_vmware_vsphere_web_client_service.html"
+    - title: Zugriff auf die Wartungskonsole
+      url: "/scpivs44_access_the_maintenance_console.html"
+    - title: Ändern Sie das Kennwort des SnapCenter Plug-in for VMware vSphere über
+        die Wartungskonsole.
+      url: "/scpivs44_modify_plugin_password.html"
+    - title: Zertifikate erstellen und importieren
+      url: "/scpivs44_create_and_import_certificates.html"
+    - title: Aufheben der Registrierung des SnapCenter Plug-in for VMware vSphere
+        bei vCenter
+      url: "/scpivs44_unregister_plugin_from_vcenter.html"
+    - title: Deaktivieren und Aktivieren des SnapCenter Plug-in for VMware vSphere
+      url: "/scpivs44_disable_and_enable_plugin.html"
+    - title: Entfernen Sie das SnapCenter Plug-in for VMware vSphere
+      url: "/scpivs44_remove_plugin.html"
+  - title: Verwalten Sie Ihre Konfiguration
+    entries:
+    - title: Zeitzonen ändern
+      url: "/scpivs44_modify_the_time_zones.html"
+    - title: Anmeldeinformationen ändern
+      url: "/scpivs44_modify_the_logon_credentials.html"
+    - title: Ändern der vCenter-Anmeldeinformationen
+      url: "/scpivs44_modify_the_vcenter_logon_credentials.html"
+    - title: Netzwerkeinstellungen ändern
+      url: "/scpivs44_modify_the_network_settings.html"
+    - title: Ändern der Konfigurationsstandardwerte
+      url: "/scpivs44_modify_configuration_default_values.html"
+    - title: Erstellen Sie die Datei scbr.override
+      url: "/scpivs44_create_the_scbr_override_file.html"
+    - title: Konfigurationseigenschaften, die Sie überschreiben können
+      url: "/scpivs44_properties_you_can_override.html"
+    - title: Aktivieren von SSH
+      url: "/scpivs44_enable_ssh.html"
+  - title: REST-APIs
+    entries:
+    - title: Überblick
+      url: "/scpivs44_rest_apis_overview.html"
+    - title: Greifen Sie über die Swagger-API-Webseite auf REST-APIs zu
+      url: "/scpivs44_access_rest_apis_using_the_swagger_api_web_page.html"
+    - title: REST-API-Workflows zum Hinzufügen und Ändern von Speicher-VMs
+      url: "/scpivs44_rest_api_workflows__add_and_modify_storage_vms.html"
+    - title: REST-API-Workflows zum Erstellen und Ändern von Ressourcengruppen
+      url: "/scpivs44_rest_api_workflows__create_and_modify_resource_groups.html"
+    - title: REST-API-Workflow zum Sichern auf Anfrage
+      url: "/scpivs44_rest_api_workflow__back_up_on_demand.html"
+    - title: REST-API-Workflow zum Wiederherstellen von VMs
+      url: "/scpivs44_rest_api_workflow__restore_vms.html"
+    - title: REST-API-Workflow zum Wiederherstellen gelöschter VMs
+      url: "/scpivs44_rest_api_workflow__restore_deleted_vms.html"
+    - title: REST-API-Workflow zum Wiederherstellen von VMDKs
+      url: "/scpivs44_rest_api_workflow__restore_vmdks.html"
+    - title: REST-API-Workflows zum Anhängen und Trennen von VMDKs
+      url: "/scpivs44_rest_api_workflows__attach_and_detach_vmdks.html"
+    - title: REST-API-Workflows zum Mounten und Unmounten von Datenspeichern
+      url: "/scpivs44_rest_api_workflows__mount_and_unmount_datastores.html"
+    - title: REST-APIs zum Herunterladen von Jobs und Generieren von Berichten
+      url: "/scpivs44_rest_apis__download_jobs_and_generate_reports.html"
+    - title: REST-API-Workflows zum Ändern integrierter Zeitpläne
+      url: "/scpivs44_rest_api_workflows__modify_built-in_schedules.html"
+    - title: REST-API zum Markieren feststeckender Jobs als fehlgeschlagen
+      url: "/scpivs44_rest_apis_fail_stuck_jobs.html"
+    - title: REST-APIs zum Generieren von Audit-Protokollen
+      url: "/scpivs48_rest_apis_audit_logs.html"
+  - title: Upgrade
+    entries:
+    - title: Upgrade von einer früheren Version des SnapCenter Plug-in for VMware
+        vSphere
+      url: "/scpivs44_upgrade.html"
+    - title: Upgrade auf einen neuen Patch derselben Version
+      url: "/scpivs44_upgrade_to_a_new_patch.html"
+    - title: Nach dem Upgrade auf einen neuen Patch derselben Version werden keine
+        Informationen angezeigt
+      url: "/scpivs44_information_not_displayed_after_upgrading_to_a_new_patch_of_the_same_release.html"
+  - title: Rechtliche Hinweise
+    url: "/legal-notices.html"

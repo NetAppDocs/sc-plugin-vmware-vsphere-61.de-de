@@ -1,0 +1,75 @@
+---
+sidebar: sidebar 
+permalink: scpivs44_view_status_information.html 
+keywords:  
+summary: Sie können Statusinformationen auf dem Dashboard des vSphere-Clients anzeigen.  Die Statusinformationen werden stündlich aktualisiert. 
+---
+= Statusinformationen anzeigen
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Sie können Statusinformationen auf dem Dashboard des vSphere-Clients anzeigen.  Die Statusinformationen werden stündlich aktualisiert.
+
+.Schritte
+. Wählen Sie auf der Verknüpfungsseite des vCenter-Clients das SnapCenter Plug-in for VMware vSphere (SCV) aus.
+. Wählen Sie im linken Navigationsbereich von SCV *Dashboard* > *Status*.
+. Zeigen Sie eine Übersicht der Statusinformationen an oder wählen Sie einen Link aus, um weitere Details anzuzeigen, wie in der folgenden Tabelle aufgeführt.
++
+|===
+| Diese Dashboard-Kachel … | Zeigt die folgenden Informationen an … 
+
+
+ a| 
+Aktuelle berufliche Tätigkeiten
+ a| 
+Die drei bis fünf aktuellsten Sicherungs-, Wiederherstellungs- und Bereitstellungsaufträge.
+
+** Wählen Sie eine Job-ID aus, um weitere Details zu diesem Job anzuzeigen.
+** Wählen Sie *Alle anzeigen*, um zur Registerkarte „Job-Monitor“ zu gelangen und weitere Details zu allen Jobs anzuzeigen.
+
+
+
+
+ a| 
+Jobs
+ a| 
+Eine Zählung aller Auftragstypen (Sicherung, Wiederherstellung und Bereitstellung), die innerhalb des ausgewählten Zeitfensters ausgeführt wurden.  Bewegen Sie den Cursor über einen Abschnitt des Diagramms, um weitere Details zu dieser Kategorie anzuzeigen.
+
+
+
+ a| 
+Neueste Schutzzusammenfassung
+ a| 
+Zusammenfassungen des Datenschutzstatus primärer und sekundärer VMs oder Datenspeicher innerhalb des ausgewählten Zeitfensters.
+
+** Wählen Sie im Dropdown-Menü *VMs* oder *Datastores* aus.
+** Wählen Sie als sekundären Speicher * SnapVault* oder * SnapMirror*.
+** Bewegen Sie den Cursor über einen Abschnitt eines Diagramms, um die Anzahl der VMs oder Datenspeicher in dieser Kategorie anzuzeigen.  In der Kategorie „Erfolgreich“ wird für jede Ressource das aktuellste Backup aufgelistet.
+** Sie können das Zeitfenster ändern, indem Sie die Konfigurationsdatei bearbeiten.  Der Standardwert beträgt 7 Tage. Weitere Informationen finden Sie unter link:scpivs44_customize_your_configuration.html["Passen Sie Ihre Konfiguration an"] .
+** Interne Zähler werden nach jeder primären oder sekundären Sicherung aktualisiert.  Die Dashboard-Kachel wird alle sechs Stunden aktualisiert.  Die Aktualisierungszeit kann nicht geändert werden.  Hinweis: Wenn Sie eine Mirror-Vault-Schutzrichtlinie verwenden, werden die Zähler für die Schutzzusammenfassung im SnapVault Zusammenfassungsdiagramm und nicht im SnapMirror Diagramm angezeigt.
+
+
+
+
+ a| 
+Konfiguration
+ a| 
+Die Gesamtzahl aller Objekttypen, die vom SnapCenter Plug-in for VMware vSphere verwaltet werden.
+
+
+
+ a| 
+Storage
+ a| 
+Die Gesamtzahl der generierten Snapshots, SnapVault und SnapMirror -Snapshots und die für primäre und sekundäre Snapshots verwendete Speichermenge. Das Liniendiagramm stellt den Primär- und Sekundärspeicherverbrauch über einen rollierenden 90-Tage-Zeitraum hinweg getrennt auf Tagesbasis dar.  Die Speicherinformationen werden alle 24 Stunden um 1:08 Uhr aktualisiert. Die Speichereinsparungen sind das Verhältnis der logischen Kapazität (Snapshot-Einsparungen plus verbrauchter Speicher) zur physischen Kapazität des Primärspeichers.  Das Balkendiagramm veranschaulicht die Speichereinsparungen.
+
+Bewegen Sie den Cursor über eine Linie im Diagramm, um detaillierte Tagesergebnisse anzuzeigen.
+
+|===
+

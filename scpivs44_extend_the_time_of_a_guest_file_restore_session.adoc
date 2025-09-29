@@ -1,0 +1,28 @@
+---
+sidebar: sidebar 
+permalink: scpivs44_extend_the_time_of_a_guest_file_restore_session.html 
+keywords:  
+summary: Standardmäßig ist eine angehängte Guest File Restore VMDK 24 Stunden lang verfügbar und wird dann automatisch getrennt.  Sie können die Zeit auf der Seite „Gastkonfiguration“ verlängern. 
+---
+= Verlängern Sie die Dauer einer Gastdateiwiederherstellungssitzung
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Standardmäßig ist eine angehängte Guest File Restore VMDK 24 Stunden lang verfügbar und wird dann automatisch getrennt.  Sie können die Zeit auf der Seite *Gastkonfiguration* verlängern.
+
+.Informationen zu diesem Vorgang
+Möglicherweise möchten Sie eine Gastdateiwiederherstellungssitzung verlängern, wenn Sie zu einem späteren Zeitpunkt zusätzliche Dateien oder Ordner aus dem angehängten VMDK wiederherstellen möchten.  Da Gastdateiwiederherstellungssitzungen jedoch viele Ressourcen verbrauchen, sollte die Sitzungsdauer nur gelegentlich verlängert werden.
+
+.Schritte
+. Wählen Sie im VMware vSphere-Client *Guest File Restore* aus.
+. Wählen Sie eine Gastdateiwiederherstellungssitzung aus und wählen Sie dann das Symbol „Ausgewählte Gastsitzung erweitern“ in der Titelleiste des Gastsitzungsmonitors.
++
+Die Sitzung wird um weitere 24 Stunden verlängert.
+
+

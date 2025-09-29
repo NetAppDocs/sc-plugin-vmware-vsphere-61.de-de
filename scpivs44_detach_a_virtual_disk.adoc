@@ -1,0 +1,42 @@
+---
+sidebar: sidebar 
+permalink: scpivs44_detach_a_virtual_disk.html 
+keywords:  
+summary: Nachdem Sie eine virtuelle Festplatte zum Wiederherstellen einzelner Dateien angeschlossen haben, können Sie die virtuelle Festplatte von der übergeordneten VM trennen. 
+---
+= Trennen einer virtuellen Festplatte
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Nachdem Sie eine virtuelle Festplatte zum Wiederherstellen einzelner Dateien angeschlossen haben, können Sie die virtuelle Festplatte von der übergeordneten VM trennen.
+
+.Schritte
+. Wählen Sie in der GUI des VMware vSphere-Clients in der Symbolleiste *Menü* und dann *VMs und Vorlagen* aus der Dropdown-Liste.
+. Wählen Sie im linken Navigationsbereich eine VM aus.
+. Klicken Sie im linken Navigationsbereich mit der rechten Maustaste auf die VM, wählen Sie dann in der Dropdownliste „SnapCenter Plug-in for VMware vSphere“ und dann in der sekundären Dropdownliste „Virtuelle Festplatte trennen“ aus.
+. Wählen Sie auf dem Bildschirm *Virtuelle Festplatte trennen* eine oder mehrere Festplatten aus, die Sie trennen möchten, aktivieren Sie dann das Kontrollkästchen *Ausgewählte Festplatte(n) trennen* und wählen Sie *TRENNEN*.
++
+
+IMPORTANT: Stellen Sie sicher, dass Sie die richtige virtuelle Festplatte auswählen.  Die Auswahl der falschen Festplatte kann die Produktionsarbeit beeinträchtigen.
+
+. Optional: Überwachen Sie den Vorgangsfortschritt im Abschnitt *Letzte Aufgaben*.
++
+Aktualisieren Sie den Bildschirm, um aktualisierte Informationen anzuzeigen.
+
+. Überprüfen Sie, ob die virtuelle Festplatte getrennt ist, indem Sie die folgenden Schritte ausführen:
++
+.. Wählen Sie *Menü* in der Symbolleiste und wählen Sie dann *VMs und Vorlagen* aus der Dropdown-Liste.
+.. Klicken Sie im linken Navigationsbereich mit der rechten Maustaste auf eine VM und wählen Sie dann in der Dropdownliste *Einstellungen bearbeiten* aus.
+.. Erweitern Sie im Fenster *Einstellungen bearbeiten* die Liste für jede Festplatte, um die Liste der Festplattendateien anzuzeigen.
++
+Auf der Seite *Einstellungen bearbeiten* werden die Festplatten auf der VM aufgelistet.  Sie können die Details für jede Festplatte erweitern, um die Liste der angeschlossenen virtuellen Festplatten anzuzeigen.
+
+
+
+

@@ -1,0 +1,108 @@
+---
+sidebar: sidebar 
+permalink: scpivs44_add_storage_01.html 
+keywords:  
+summary: Durch das Hinzufügen von Speicher kann das SnapCenter Plug-in for VMware vSphere Sicherungs- und Wiederherstellungsvorgänge in vCenter erkennen und verwalten. 
+---
+= Speicher hinzufügen
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Bevor Sie VMs sichern oder wiederherstellen können, müssen Sie Speichercluster oder Speicher-VMs hinzufügen.  Durch das Hinzufügen von Speicher kann das SnapCenter Plug-in for VMware vSphere Sicherungs- und Wiederherstellungsvorgänge in vCenter erkennen und verwalten.
+
+* Welche GUI soll verwendet werden?
++
+Verwenden Sie den VMware vSphere-Client, um Speicher hinzuzufügen.
+
+* Große LUNs
++
+Das SnapCenter Plug-in for VMware vSphere 4.5 und höher unterstützt Datenspeicher auf großen LUN-Größen bis zu 128 TB auf ASA -Aggregaten.  Bei großen LUNs unterstützt SnapCenter nur Thick Provisioning LUNs, um Latenz zu vermeiden.
+
+* Virtuelle VMware-Volumes (vVols)
++
+Sie müssen Speichercluster zum SnapCenter Plug-in for VMware vSphere und ONTAP tools for VMware vSphere hinzufügen, damit vVol DataProtection funktioniert.
+
++
+Weitere Informationen finden Sie in der Dokumentation zu den ONTAP tools for VMware vSphere . Weitere Informationen finden Sie unter https://imt.netapp.com/matrix/imt.jsp?components=134348;&solution=1517&isHWU&src=IMT["NetApp Interoperabilitätsmatrix-Tool"^] für aktuelle Informationen zu den unterstützten Versionen der ONTAP Tools.
+
+
+
+.Bevor Sie beginnen
+Der ESXi-Server, das SnapCenter Plug-in for VMware vSphere und jedes vCenter müssen auf die gleiche Zeit synchronisiert werden.  Wenn Sie versuchen, Speicher hinzuzufügen, die Zeiteinstellungen für Ihre vCenter jedoch nicht synchronisiert sind, schlägt der Vorgang möglicherweise mit einem Java-Zertifikatfehler fehl.
+
+.Informationen zu diesem Vorgang
+Das SnapCenter Plug-in for VMware vSphere führt Sicherungs- und Wiederherstellungsvorgänge auf direkt verbundenen Speicher-VMs und auf Speicher-VMs in einem Speichercluster durch.
+
+
+NOTE: Wenn Sie das SnapCenter Plug-in for VMware vSphere verwenden, um anwendungsbasierte Backups auf VMDKs zu unterstützen, müssen Sie die SnapCenter -GUI verwenden, um Speicherauthentifizierungsdetails einzugeben und Speichersysteme zu registrieren.
+
+* Für vCenter im verknüpften Modus müssen Sie jedem vCenter separat Speichersysteme hinzufügen.
+* Wenn Sie SVM hinzufügen, müssen die Namen der Speicher-VMs in Verwaltungs-LIFs aufgelöst werden.
++
+Wenn Sie in SnapCenter Einträge zur Datei _etc\hosts_ für Speicher-VM-Namen hinzugefügt haben, müssen Sie sicherstellen, dass diese auch von der virtuellen Appliance auflösbar sind.  Wenn dies nicht der Fall ist, sollten Sie ähnliche Einträge zur Datei _etc/hosts_ innerhalb der Appliance hinzufügen.
+
++
+Wenn Sie eine Speicher-VM mit einem Namen hinzufügen, der nicht in das Verwaltungs-LIF aufgelöst werden kann, schlagen geplante Sicherungsaufträge fehl, da das Plug-In keine Datenspeicher oder Volumes auf dieser Speicher-VM erkennen kann.  Wenn dies eintritt, fügen Sie entweder die Speicher-VM zu SnapCenter hinzu und geben Sie das Verwaltungs-LIF an oder fügen Sie einen Cluster hinzu, der die Speicher-VM enthält, und geben Sie das Cluster-Verwaltungs-LIF an.
+
+* Speicherauthentifizierungsdetails werden nicht zwischen mehreren Instanzen des SnapCenter Plug-in for VMware vSphere oder zwischen Windows SnapCenter Server und dem SnapCenter -Plug-In auf vCenter geteilt.
+
+
+.Schritte
+. Wählen Sie auf der Verknüpfungsseite des vCenter-Clients das SnapCenter Plug-in for VMware vSphere (SCV) aus.
+. Wählen Sie im linken Navigationsbereich von SCV *Dashboard* > *Speichersysteme*.
+. Wählen Sie auf der Seite „Speichersysteme“ die Option *Hinzufügen*.
+. Geben Sie im Assistenten *Speichersystem hinzufügen* die grundlegenden Speicher-VM- oder Clusterinformationen ein, wie in der folgenden Tabelle aufgeführt:
++
+|===
+| Für dieses Feld… | Mach das… 
+
+
+| Speichersystem | Geben Sie den FQDN oder die IP-Adresse des Management-LIF eines Speicherclusters oder einer Speicher-VM ein.  Das SnapCenter Plug-in for VMware vSphere unterstützt nicht mehrere Speicher-VMs mit demselben Namen auf verschiedenen Clustern. 
+
+
+| Authentifizierungsmethode | Wählen Sie entweder Anmeldeinformationen oder Zertifikat aus.  Es werden zwei Arten von Zertifikaten unterstützt: - https://kb.netapp.com/Advice_and_Troubleshooting/Data_Protection_and_Security/SnapCenter/How_to_configure_a_self-signed_certificate_for_storage_system_authentication_with_SCV["Selbstsigniertes Zertifikat"^] - https://kb.netapp.com/Advice_and_Troubleshooting/Data_Protection_and_Security/SnapCenter/How_to_configure_a_CA_signed_certificate_for_storage_system_authentication_with_SCV["CA-signiertes Zertifikat"] . 
+
+
+| Benutzername | Dieses Feld ist sichtbar, wenn Sie „Anmeldeinformationen“ als Authentifizierungsmethode auswählen.  Geben Sie den ONTAP -Benutzernamen ein, der für die Anmeldung bei der Speicher-VM oder dem Cluster verwendet wird. 
+
+
+| Passwort | Dieses Feld ist sichtbar, wenn Sie „Anmeldeinformationen“ als Authentifizierungsmethode auswählen.  Geben Sie das Anmeldekennwort für die Speicher-VM oder den Cluster ein. 
+
+
+| Zertifikat | Dieses Feld ist sichtbar, wenn Sie „Zertifikat“ als Authentifizierungsmethode auswählen.  Durchsuchen Sie die Datei, um die Zertifikatsdatei auszuwählen. 
+
+
+| Privater Schlüssel | Dieses Feld ist sichtbar, wenn Sie „Zertifikat“ als Authentifizierungsmethode auswählen.  Durchsuchen Sie die Datei, um sie mit dem privaten Schlüssel auszuwählen. 
+
+
+| Protokoll | Wählen Sie das Speicherprotokoll aus. 
+
+
+| Hafen | Port, den das Speichersystem akzeptiert.  - 443 für HTTPS-Verbindung - 80 für HTTP-Verbindung 
+
+
+| Time-out | Geben Sie die Anzahl der Sekunden ein , die das SnapCenter Plug-in for VMware vSphere warten soll, bevor der Vorgang abgebrochen wird.  Der Standardwert beträgt 60 Sekunden. 
+
+
+| Bevorzugte IP-Adresse | Wenn die Speicher-VM über mehr als eine Verwaltungs-IP-Adresse verfügt, aktivieren Sie dieses Kontrollkästchen und geben Sie die IP-Adresse ein, die das SnapCenter Plug-in for VMware vSphere verwenden soll.  *Hinweis:* Verwenden Sie bei der Eingabe der IP-Adresse keine eckigen Klammern ([]). 
+
+
+| Event Management System (EMS) und AutoSupport -Einstellungen | Wenn Sie EMS-Nachrichten an das Syslog des Speichersystems senden möchten oder wenn Sie möchten, dass AutoSupport Nachrichten zum angewendeten Schutz, zu abgeschlossenen Wiederherstellungsvorgängen oder zu fehlgeschlagenen Vorgängen an das Speichersystem gesendet werden, aktivieren Sie das entsprechende Kontrollkästchen. Aktivieren Sie das Kontrollkästchen * AutoSupport -Benachrichtigung für fehlgeschlagene Vorgänge an das Speichersystem senden* und das Kontrollkästchen * SnapCenter -Server-Ereignisse in Syslog protokollieren*, um AutoSupport Benachrichtigungen zu aktivieren. 
+
+
+| SnapCenter Server-Ereignisse im Syslog protokollieren | Aktivieren Sie das Kontrollkästchen, um Ereignisse für das SnapCenter Plug-in for VMware vSphere zu protokollieren. 
+
+
+| Senden Sie eine AutoSupport -Benachrichtigung für einen fehlgeschlagenen Vorgang an das Speichersystem | Aktivieren Sie das Kontrollkästchen, wenn Sie eine AutoSupport Benachrichtigung für fehlgeschlagene Datenschutzaufträge erhalten möchten.  Sie müssen AutoSupport auch auf der Speicher-VM aktivieren und die E-Mail-Einstellungen von AutoSupport konfigurieren. 
+|===
+. Wählen Sie *Hinzufügen*.
++
+Wenn Sie einen Speichercluster hinzugefügt haben, werden alle Speicher-VMs in diesem Cluster automatisch hinzugefügt.  Automatisch hinzugefügte Speicher-VMs (manchmal auch „implizite“ Speicher-VMs genannt) werden auf der Cluster-Übersichtsseite mit einem Bindestrich (-) anstelle eines Benutzernamens angezeigt.  Benutzernamen werden nur für explizite Speichereinheiten angezeigt.
+
+

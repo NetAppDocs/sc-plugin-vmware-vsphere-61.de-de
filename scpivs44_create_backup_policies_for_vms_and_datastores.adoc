@@ -1,0 +1,162 @@
+---
+sidebar: sidebar 
+permalink: scpivs44_create_backup_policies_for_vms_and_datastores.html 
+keywords:  
+summary: Sie müssen Sicherungsrichtlinien erstellen, bevor Sie das SnapCenter Plug-in for VMware vSphere zum Sichern von VMs und Datenspeichern verwenden. 
+---
+= Erstellen Sie Sicherungsrichtlinien für VMs und Datenspeicher
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Sie müssen Sicherungsrichtlinien erstellen, bevor Sie das SnapCenter Plug-in for VMware vSphere zum Sichern von VMs und Datenspeichern verwenden.
+
+.Bevor Sie beginnen
+* Sie müssen die Voraussetzungen gelesen haben.
+* Sie müssen sekundäre Speicherbeziehungen konfiguriert haben.
++
+** Wenn Sie Snapshots auf einen Spiegel- oder Tresor-Sekundärspeicher replizieren, müssen die Beziehungen konfiguriert werden und der SnapCenter Administrator muss Ihnen die Speicher-VMs sowohl für das Quell- als auch für das Zielvolume zugewiesen haben.
+** Um Snapshots für Version-FlexibleMirror-Beziehungen auf einem NFS- oder VMFS-Datenspeicher erfolgreich auf den sekundären Speicher zu übertragen, stellen Sie sicher, dass der SnapMirror Richtlinientyp „Asynchronous Mirror“ ist und dass die Option „all_source_snapshots“ aktiviert ist.
+** Wenn die Anzahl der Snapshots auf dem sekundären Speicher (Mirror-Vault) die maximale Grenze erreicht, schlägt die Aktivität zum Registrieren der Sicherung und Anwenden der Aufbewahrung im Sicherungsvorgang mit dem folgenden Fehler fehl: `This snapshot is currently used as a reference snapshot by one or more SnapMirror relationships. Deleting the snapshot can cause future SnapMirror operations to fail.`
++
+Um dieses Problem zu beheben, konfigurieren Sie die SnapMirror -Aufbewahrungsrichtlinie für den sekundären Speicher, um zu vermeiden, dass die maximale Anzahl an Snapshots erreicht wird.
+
++
+Informationen dazu, wie Administratoren Benutzern Ressourcen zuweisen, finden Sie unter https://docs.netapp.com/us-en/snapcenter/get-started/rbac-snapcenter.html["SnapCenter Informationen zur Verwendung der rollenbasierten Zugriffskontrolle"^] .
+
+
+
+* Wenn Sie VM-konsistente Backups wünschen, müssen Sie VMware-Tools installiert und ausgeführt haben.  Zum Stilllegen von VMs werden VMware-Tools benötigt.  VM-konsistente Sicherungen werden für vVol-VMs nicht unterstützt.
+* SnapMirror Active Sync ermöglicht die Weiterführung des Betriebs von Geschäftsdiensten auch bei einem vollständigen Site-Ausfall und unterstützt Anwendungen bei einem transparenten Failover mithilfe einer sekundären Kopie.
++
+
+NOTE: SnapMirror Active Sync wird nur für VMFS-Datenspeicher unterstützt.
+
++
+Um einen VMFS-Datenspeicher auf einer SnapMirror Active Sync-Bereitstellung zu schützen, müssen Sie als SnapCenter -Administrator Folgendes tun:
+
++
+** Konfigurieren Sie Cluster und Mediator wie im technischen Bericht beschrieben: https://docs.netapp.com/us-en/ontap/snapmirror-active-sync/mediator-install-task.html["Konfigurieren Sie den ONTAP Mediator und die Cluster für SnapMirror Active Sync"] .
+** Fügen Sie das mit dem VMFS-Datenspeicher verknüpfte Volume der Konsistenzgruppe hinzu und erstellen Sie mithilfe der Schutzrichtlinie _AutomatedFailOver_ oder _AutomatedFailOverDuplex_ eine Datenschutzbeziehung zwischen zwei ONTAP Speichersystemen.  Die Richtlinie _AutomatedFailOverDuplex_ wird ab der ONTAP Version 9.15.1 unterstützt.
+
+
+
+
+
+NOTE: In der Fan-Out-Konfiguration wird die Konsistenzgruppe für den tertiären Standort nicht unterstützt.
+
+.Informationen zu diesem Vorgang
+Die meisten Felder auf diesen Assistentenseiten sind selbsterklärend. Die folgenden Informationen beschreiben einige der Felder, für die Sie möglicherweise Anleitungen benötigen.
+
+.Schritte
+. Wählen Sie im linken Navigationsbereich des SCV-Plug-Ins *Richtlinien* aus.
+. Wählen Sie auf der Seite *Richtlinien* die Option *Erstellen* aus, um den Assistenten zu starten.
+. Geben Sie auf der Seite *Neue Sicherungsrichtlinie* den Richtliniennamen und eine Beschreibung ein.
++
+** Verknüpfter Modus
++
+Im verknüpften Modus verfügt jedes vCenter über eine separate virtuelle Appliance. Daher können Sie in allen vCentern doppelte Namen verwenden.  Sie müssen die Richtlinie jedoch im selben vCenter wie die Ressourcengruppe erstellen.
+
+** Nicht unterstützte Zeichen
++
+Verwenden Sie die folgenden Sonderzeichen nicht in VM-, Datenspeicher-, Cluster-, Richtlinien-, Sicherungs- oder Ressourcengruppennamen: % & * $ # @ ! \ / : * ? " < > - | ; ' und Leerzeichen.
+
++
+Ein Unterstrich (_) ist zulässig.
+
+
+
+. Geben Sie die Frequenzeinstellungen an.
++
+Die Richtlinie gibt nur die Sicherungshäufigkeit an. Der spezifische Schutzzeitplan für die Sicherung wird in der Ressourcengruppe definiert. Daher können zwei oder mehr Ressourcengruppen dieselbe Richtlinie und Sicherungshäufigkeit verwenden, jedoch unterschiedliche Sicherungspläne haben.
+
+. Aktivieren Sie das Kontrollkästchen *Sperrzeitraum*, um die Snapshot-Sperre zu aktivieren.  Sie können die Sperrzeiträume für den primären und sekundären Snapshot in Tagen/Monaten/Jahren auswählen.
++
+
+NOTE: Unabhängig vom in der ONTAP SnapMirror Richtlinie festgelegten Aufbewahrungswert wird die sekundäre Snapshot-Kopie nicht vor Ablauf der angegebenen Sperrfrist für sekundäre Snapshots gelöscht.
+
+. Geben Sie die Aufbewahrungseinstellungen an.
++
+
+IMPORTANT: Sie sollten die Aufbewahrungsanzahl auf 2 Backups oder höher einstellen, wenn Sie die SnapVault -Replikation aktivieren möchten.  Wenn Sie die Anzahl der aufzubewahrenden Sicherungen auf 1 festlegen, kann der Aufbewahrungsvorgang fehlschlagen.  Dies liegt daran, dass der erste Snapshot der Referenz-Snapshot für die SnapVault -Beziehung ist, bis der neuere Snapshot auf das Ziel repliziert wird.
+
++
+
+NOTE: Der maximale Aufbewahrungswert beträgt 1018 Backups. Sicherungen schlagen fehl, wenn die Aufbewahrung auf einen höheren Wert eingestellt ist, als von der zugrunde liegenden ONTAP Version unterstützt wird.  Dies gilt auch für übergreifende Datenspeicher.
+
+
+
+. Geben Sie in den Feldern *Replikation* den Replikationstyp auf den sekundären Speicher an, wie in der folgenden Tabelle gezeigt:
++
+|===
+| Für dieses Feld… | Mach das… 
+
+
+| SnapMirror nach der Sicherung aktualisieren  a| 
+Wählen Sie diese Option, um Spiegelkopien von Sicherungssätzen auf einem anderen Volume zu erstellen, das über eine SnapMirror -Beziehung zum primären Sicherungsvolume verfügt.  Wenn ein Volume mit einer Mirror-Vault-Beziehung konfiguriert ist, müssen Sie nur die Option * SnapVault nach Sicherung aktualisieren* auswählen, wenn Sie möchten, dass Sicherungen an die Mirror-Vault-Ziele kopiert werden.
+
+
+NOTE: Diese Option wird für Datenspeicher in FlexGroup -Volumes im SnapCenter Plug-in for VMware vSphere 4.5 und höher unterstützt.
+
+
+NOTE: Um den VMFS-Datenspeicher bei der Bereitstellung von SnapMirror Active Sync zu schützen, müssen Sie die im Abschnitt „Bevor Sie beginnen“ genannten Voraussetzungen erfüllen und „ SnapMirror nach der Sicherung aktualisieren“ aktivieren.
+
+
+
+| SnapVault nach der Sicherung aktualisieren  a| 
+Wählen Sie diese Option, um eine Disk-to-Disk-Sicherungsreplikation auf einem anderen Volume durchzuführen, das über eine SnapVault -Beziehung zum primären Sicherungsvolume verfügt.
+
+
+IMPORTANT: Wenn ein Volume mit einer Mirror-Vault-Beziehung konfiguriert ist, müssen Sie diese Option nur auswählen, wenn Sie möchten, dass Sicherungen an die Mirror-Vault-Ziele kopiert werden.
+
+
+NOTE: Diese Option wird für Datenspeicher in FlexGroup -Volumes im SnapCenter Plug-in for VMware vSphere 4.5 und höher unterstützt.
+
+
+
+| Snapshot-Bezeichnung  a| 
+Geben Sie eine optionale, benutzerdefinierte Bezeichnung ein, die den mit dieser Richtlinie erstellten SnapVault und SnapMirror -Snapshots hinzugefügt werden soll.  Die Snapshot-Bezeichnung hilft dabei, mit dieser Richtlinie erstellte Snapshots von anderen Snapshots auf dem sekundären Speichersystem zu unterscheiden.
+
+
+NOTE: Für Snapshot-Beschriftungen sind maximal 31 Zeichen zulässig.
+
+|===
+. Optional: Wählen Sie in den *Erweiterten* Feldern die benötigten Felder aus.  Die erweiterten Felddetails sind in der folgenden Tabelle aufgeführt.
++
+|===
+| Für dieses Feld… | Mach das… 
+
+
+| VM-Konsistenz  a| 
+Aktivieren Sie dieses Kontrollkästchen, um die VMs stillzulegen und bei jeder Ausführung des Sicherungsjobs einen VMware-Snapshot zu erstellen.
+
+Diese Option wird für vVols nicht unterstützt.  Für vVol-VMs werden nur absturzkonsistente Sicherungen durchgeführt.
+
+
+IMPORTANT: Um VM-konsistente Sicherungen durchführen zu können, müssen auf der VM VMware-Tools ausgeführt werden.  Wenn VMware Tools nicht ausgeführt wird, wird stattdessen eine absturzkonsistente Sicherung durchgeführt.
+
+
+NOTE: Wenn Sie das Kontrollkästchen „VM-Konsistenz“ aktivieren, können Sicherungsvorgänge länger dauern und mehr Speicherplatz erfordern.  In diesem Szenario werden die VMs zunächst stillgelegt, dann führt VMware einen VM-konsistenten Snapshot durch, anschließend führt SnapCenter seinen Sicherungsvorgang durch und anschließend werden die VM-Vorgänge wieder aufgenommen.  Der VM-Gastspeicher ist nicht in den VM-Konsistenz-Snapshots enthalten.
+
+
+
+| Datenspeicher mit unabhängigen Datenträgern einbeziehen | Aktivieren Sie dieses Kontrollkästchen, um alle Datenspeicher mit unabhängigen Festplatten, die temporäre Daten enthalten, in die Sicherung einzubeziehen. 
+
+
+| Skripte  a| 
+Geben Sie den vollqualifizierten Pfad des Präskripts oder Postskripts ein, das das SnapCenter Plug-in for VMware vSphere vor oder nach Sicherungsvorgängen ausführen soll. Sie können beispielsweise ein Skript ausführen, um SNMP-Traps zu aktualisieren, Warnungen zu automatisieren und Protokolle zu senden.  Der Skriptpfad wird zum Zeitpunkt der Skriptausführung validiert.
+
+
+NOTE: Prescripts und Postscripts müssen sich auf der virtuellen Appliance-VM befinden.  Um mehrere Skripte einzugeben, drücken Sie nach jedem Skriptpfad die Eingabetaste, um jedes Skript in einer separaten Zeile aufzulisten.  Das Zeichen „;“ ist nicht zulässig.
+
+|===
+. Wählen Sie *Hinzufügen*.
++
+Sie können überprüfen, ob die Richtlinie erstellt wurde, und die Richtlinienkonfiguration prüfen, indem Sie die Richtlinie auf der Seite „Richtlinien“ auswählen.
+
+

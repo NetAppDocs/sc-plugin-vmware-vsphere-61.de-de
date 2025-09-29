@@ -1,0 +1,42 @@
+---
+sidebar: sidebar 
+permalink: scpivs44_ontap_rbac_features_in_snapcenter.html 
+keywords:  
+summary: 'Das SnapCenter Plug-in for VMware vSphere arbeitet mit vCenter Server RBAC, SnapCenter RBAC (bei Bedarf zur Unterstützung anwendungsbasierter Vorgänge) und ONTAP RBAC, um zu bestimmen, welche SnapCenter -Aufgaben ein bestimmter Benutzer an Objekten auf einem bestimmten Speichersystem ausführen kann.' 
+---
+= ONTAP RBAC-Funktionen im SnapCenter Plug-in for VMware vSphere
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+
+NOTE: ONTAP RBAC gilt nur für anwendungskonsistente SnapCenter Server-Jobs (Anwendung über VMDK).
+
+[role="lead"]
+Mit der rollenbasierten Zugriffskontrolle (RBAC) von ONTAP können Sie den Zugriff auf bestimmte Speichersysteme und die Aktionen steuern, die ein Benutzer auf diesen Speichersystemen ausführen kann.  Das SnapCenter Plug-in for VMware vSphere arbeitet mit vCenter Server RBAC, SnapCenter RBAC (bei Bedarf zur Unterstützung anwendungsbasierter Vorgänge) und ONTAP RBAC, um zu bestimmen, welche SnapCenter -Aufgaben ein bestimmter Benutzer an Objekten auf einem bestimmten Speichersystem ausführen kann.
+
+SnapCenter verwendet die von Ihnen eingerichteten Anmeldeinformationen (Benutzername und Kennwort), um jedes Speichersystem zu authentifizieren und zu bestimmen, welche Vorgänge auf diesem Speichersystem ausgeführt werden können.  Das SnapCenter Plug-in for VMware vSphere verwendet einen Satz Anmeldeinformationen für jedes Speichersystem.  Diese Anmeldeinformationen bestimmen alle Aufgaben, die auf diesem Speichersystem ausgeführt werden können. Mit anderen Worten: Die Anmeldeinformationen gelten für SnapCenter und nicht für einen einzelnen SnapCenter -Benutzer.
+
+ONTAP RBAC gilt nur für den Zugriff auf Speichersysteme und die Durchführung von SnapCenter -Aufgaben im Zusammenhang mit dem Speicher, wie etwa das Sichern von VMs.  Wenn Sie nicht über die entsprechenden ONTAP RBAC-Berechtigungen für ein bestimmtes Speichersystem verfügen, können Sie keine Aufgaben an einem auf diesem Speichersystem gehosteten vSphere-Objekt ausführen.
+
+Jedem Speichersystem ist ein Satz ONTAP Berechtigungen zugeordnet.
+
+Die Verwendung von ONTAP RBAC und vCenter Server RBAC bietet die folgenden Vorteile:
+
+* Sicherheit
++
+Der Administrator kann steuern, welche Benutzer welche Aufgaben sowohl auf der feinkörnigen vCenter Server-Objektebene als auch auf der Speichersystemebene ausführen können.
+
+* Audit-Informationen
++
+In vielen Fällen stellt SnapCenter einen Prüfpfad auf dem Speichersystem bereit, mit dem Sie Ereignisse bis zum vCenter-Benutzer zurückverfolgen können, der die Speicheränderungen vorgenommen hat.
+
+* Benutzerfreundlichkeit
++
+Sie können die Controller-Anmeldeinformationen an einem Ort verwalten.
+
+

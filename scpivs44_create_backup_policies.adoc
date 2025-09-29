@@ -1,0 +1,21 @@
+---
+sidebar: sidebar 
+permalink: scpivs44_create_backup_policies.html 
+keywords:  
+summary:  
+---
+= Erstellen von Sicherungsrichtlinien
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Befolgen Sie die unten stehenden Anweisungen, um Sicherungsrichtlinien zu erstellen
+
+. Wählen Sie im linken Navigationsbereich des SCV-Plug-Ins „Richtlinien“ und dann „Neue Richtlinie“ aus.
+. Geben Sie auf der Seite *Neue Sicherungsrichtlinie* die Richtlinienkonfigurationsinformationen ein und wählen Sie dann *Hinzufügen* aus.
+

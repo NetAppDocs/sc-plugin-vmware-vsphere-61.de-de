@@ -1,0 +1,54 @@
+---
+sidebar: sidebar 
+permalink: scpivs44_mount_a_backup.html 
+keywords:  
+summary: Sie können einen herkömmlichen Datenspeicher aus einer Sicherung mounten, wenn Sie auf Dateien in der Sicherung zugreifen möchten. Sie können das Backup entweder auf demselben ESXi-Host mounten, auf dem das Backup erstellt wurde, oder auf einem alternativen ESXi-Host, der über denselben VM-Typ und dieselben Hostkonfigurationen verfügt. Sie können einen Datenspeicher mehrmals auf einem Host mounten. 
+---
+= Mounten Sie ein Backup
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Sie können einen herkömmlichen Datenspeicher aus einer Sicherung mounten, wenn Sie auf Dateien in der Sicherung zugreifen möchten. Sie können das Backup entweder auf demselben ESXi-Host mounten, auf dem das Backup erstellt wurde, oder auf einem alternativen ESXi-Host, der über denselben VM-Typ und dieselben Hostkonfigurationen verfügt. Sie können einen Datenspeicher mehrmals auf einem Host mounten.
+
+Sie können keinen vVol-Datenspeicher mounten.
+
+.Bevor Sie beginnen
+* Stellen Sie sicher, dass ein alternativer ESXi-Host eine Verbindung zum Speicher herstellen kann
++
+Wenn Sie einen alternativen ESXi-Host mounten möchten, müssen Sie sicherstellen, dass der alternative ESXi-Host eine Verbindung zum Speicher herstellen kann und über Folgendes verfügt:
+
++
+** Dieselbe UID und GID wie die des ursprünglichen Hosts
+** Dieselbe virtuelle Appliance für das SnapCenter Plug-in for VMware vSphere Version wie die des ursprünglichen Hosts
+
+
+* Stellen Sie bei Verwendung des iSCSI-Protokolls sicher, dass die Initiatoren für das Speichersystem dem ESXi-Host zugeordnet sind.  Wenn Sie das NVMe-Protokoll verwenden, fügen Sie Controller hinzu, um das erforderliche Subsystem dem ESXi-Host zuzuordnen.
+* Bereinigen Sie veraltete LUNs/Namespaces
++
+Da der ESXi-Host nur einen eindeutigen LUN/Namespace pro Datenspeicher erkennen kann, schlägt der Vorgang fehl, wenn mehr als einer gefunden wird.  Dies kann passieren, wenn Sie einen Mount-Vorgang starten, bevor ein vorheriger Mount-Vorgang abgeschlossen ist, oder wenn Sie LUN/Namespace manuell klonen, oder wenn Klone während eines Unmount-Vorgangs nicht aus dem Speicher gelöscht werden.  Um die Erkennung mehrerer Klone zu vermeiden, sollten Sie alle veralteten LUNs/Namespaces auf dem Speicher bereinigen.
+
+
+
+.Informationen zu diesem Vorgang
+Ein Mount-Vorgang kann fehlschlagen, wenn die Speicherebene des FabricPool , in dem sich der Datenspeicher befindet, nicht verfügbar ist.
+
+.Schritte
+. Wählen Sie auf der Verknüpfungsseite des VMware vSphere-Clients *Speicher* aus.
+. Klicken Sie mit der rechten Maustaste auf einen Datenspeicher und wählen Sie * SnapCenter Plug-in for VMware vSphere* > *Backup mounten*.
+. Wählen Sie auf der Seite *Datenspeicher bereitstellen* eine Sicherung und einen Sicherungsspeicherort (primär oder sekundär) aus und wählen Sie dann *Fertig stellen*.
+. Optional: Um zu überprüfen, ob der Datenspeicher gemountet ist, führen Sie die folgenden Schritte aus:
++
+.. Wählen Sie *Menü* in der Symbolleiste und wählen Sie dann *Speicher* aus der Dropdown-Liste.
+.. Im linken Navigationsbereich wird der von Ihnen gemountete Datenspeicher oben in der Liste angezeigt.
++
+Um zu verhindern, dass beim Klonen des Volumes neue Snapshots erstellt werden, deaktivieren Sie den ONTAP Zeitplan für das SnapVault -Volume.  Bereits vorhandene Snapshots werden nicht gelöscht.
+
+
+
+

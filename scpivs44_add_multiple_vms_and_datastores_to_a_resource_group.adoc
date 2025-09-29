@@ -1,0 +1,48 @@
+---
+sidebar: sidebar 
+permalink: scpivs44_add_multiple_vms_and_datastores_to_a_resource_group.html 
+keywords:  
+summary: Sie können einer vorhandenen Ressourcengruppe mehrere Ressourcen hinzufügen, indem Sie den Assistenten „Ressourcengruppe bearbeiten“ des SnapCenter VMware vSphere-Clients verwenden. 
+---
+= Hinzufügen mehrerer VMs und Datenspeicher zu einer Ressourcengruppe
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Mit dem Assistenten „Ressourcengruppe bearbeiten“ des SnapCenter VMware vSphere-Clients können Sie einer vorhandenen Ressourcengruppe mehrere Ressourcen hinzufügen.
+
+Eine Ressourcengruppe kann eines der folgenden Elemente enthalten:
+
+* Jede Kombination aus herkömmlichen VMs und SAN- und NAS-Datenspeichern (vVol-Datenspeicher werden nicht unterstützt).
+* Ein FlexGroup -Datenspeicher (übergreifende VMs werden nicht unterstützt).
+* Ein oder mehrere FlexVol -Datenspeicher (übergreifende VMs werden unterstützt).
+* Eine oder mehrere vVol-VMs.
+* Alle vVol-VMs mit einem angegebenen vSphere-Tag.
+* Alle vVol-VMs in einem angegebenen Ordner.
+
+
+
+NOTE: vVol-VMs, die sich über mehrere vVol-Datenspeicher erstrecken, werden nicht unterstützt, da SnapCenter vVols nur im primären, ausgewählten vVol-Datenspeicher sichert.
+
+.Schritte
+. Wählen Sie im linken Navigationsbereich des SCV-Plugins *Ressourcengruppen*, wählen Sie dann eine Ressourcengruppe aus und wählen Sie dannimage:scpivs44_image39.png["Symbol „Bearbeiten“"] *Ressourcengruppe bearbeiten*, um den Assistenten zu starten.
+. Führen Sie auf der Seite *Ressource* die folgenden Schritte aus:
++
+.. Navigieren Sie im Feld „Datenspeicher“ zu den VMs oder Datenspeichern, die Sie hinzufügen möchten.
+.. Wählen Sie in der Liste „Verfügbare Entitäten“ eine oder mehrere VMs oder Datenspeicher aus, die Sie der Ressourcengruppe hinzufügen möchten, und wählen Sie dann *>* aus, um Ihre Auswahl in die Liste „Ausgewählte Entitäten“ zu verschieben.  Wählen Sie *>>*, um alle verfügbaren Entitäten zu verschieben.
++
+Standardmäßig wird in der Liste „Verfügbare Entitäten“ das Datacenter-Objekt angezeigt.  Sie können einen Datenspeicher auswählen, um die VMs im Datenspeicher anzuzeigen und sie der Ressourcengruppe hinzuzufügen.
+
++
+Wenn Sie *Weiter* auswählen, überprüft das System zunächst, ob SnapCenter den Speicher verwaltet und mit ihm kompatibel ist, auf dem sich die ausgewählten VMs oder Datenspeicher befinden.  Wenn die Nachricht `Some entities are not SnapCenter compatible` angezeigt wird, ist eine ausgewählte VM oder ein ausgewählter Datenspeicher nicht mit SnapCenter kompatibel. Weitere Informationen finden Sie unter link:scpivs44_create_resource_groups_for_vms_and_datastores.html#manage-compatibility-check-failures["Verwalten von Fehlern bei der Kompatibilitätsprüfung"] für weitere Informationen.
+
+
+
+. Wiederholen Sie Schritt 2 für jede VM oder jeden Datenspeicher, den Sie hinzufügen möchten.
+. Wählen Sie *Weiter*, bis Sie die Seite *Zusammenfassung* erreichen, überprüfen Sie dann die Zusammenfassung und wählen Sie *Fertig*.
+

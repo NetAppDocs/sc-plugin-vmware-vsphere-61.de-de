@@ -1,0 +1,42 @@
+---
+sidebar: sidebar 
+permalink: scpivs44_rest_api_workflow__restore_deleted_vms.html 
+keywords:  
+summary: Um Wiederherstellungsvorgänge für VM-Backups mit dem SnapCenter Plug-in for VMware vSphere REST-APIs durchzuführen, müssen Sie die vorgeschriebene Reihenfolge der REST-API-Aufrufe einhalten. 
+---
+= REST-API-Workflow zum Wiederherstellen gelöschter VMs
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Um Wiederherstellungsvorgänge für VM-Backups mit dem SnapCenter Plug-in for VMware vSphere REST-APIs durchzuführen, müssen Sie die vorgeschriebene Reihenfolge der REST-API-Aufrufe einhalten.
+
+Fügen Sie für jede REST-API hinzu `\https://<server>:<port>` an der Vorderseite der REST-API, um einen vollständigen Endpunkt zu bilden.
+
+|===
+| Schritt | REST-API | Kommentare 
+
+
+| 1 | Gehe zu
+`\http://<vCenter-IP>/mob` | Suchen Sie die VM-UUID in der VMware Managed Objects-URL.  Notieren Sie die *UUID* für die VM, die Sie wiederherstellen möchten. 
+
+
+| 2 | `/4.1/vm/{uuid}/backups` | `Get VM Backups`Ruft eine Liste der Sicherungen für die angegebene VM ab.  Übergeben Sie die *UUID* aus Schritt 1.  Notieren Sie sich die *Backup-ID* des Backups, das Sie wiederherstellen möchten. 
+
+
+| 3 | `/4.1/vm/backups/{backupId}/
+snapshotlocations` | `Get snapshot locations`Ruft den Speicherort des Snapshots für die angegebene Sicherung ab.  Übergeben Sie die *Backup-ID* aus Schritt 2.  Beachten Sie die Informationen *snapshotLocationsList*. 
+
+
+| 4 | `/4.1/vm/{moref}/backups/
+availableesxhosts` | `Get available ESX Hosts`ruft die Informationen für den Host ab, auf dem das Backup gespeichert ist.  Beachten Sie die Informationen *availableEsxHostsList*. 
+
+
+| 5 | `/4.1/vm/{uuid}/backups/
+{backupId}/restore` | `Restore VM from a backup using uuid or restore a deleted VM`stellt die angegebene Sicherung wieder her.  Übergeben Sie die *UUID* aus Schritt 1.  Übergeben Sie die *Backup-ID* aus Schritt 2.  Übergeben Sie die Informationen aus den Schritten 3 und 4 im Attribut *restoreLocations*.  Wenn es sich bei der VM-Sicherung um eine Teilsicherung handelt, legen Sie die `restartVM` Parameter auf „false“.  *Hinweis:* Sie können eine VM, die eine Vorlage ist, nicht wiederherstellen. 
+|===

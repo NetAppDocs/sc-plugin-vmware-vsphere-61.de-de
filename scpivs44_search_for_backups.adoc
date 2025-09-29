@@ -1,0 +1,37 @@
+---
+sidebar: sidebar 
+permalink: scpivs44_search_for_backups.html 
+keywords:  
+summary: Mit dem Wiederherstellungsassistenten können Sie nach einer bestimmten Sicherung einer VM oder eines Datenspeichers suchen und diese finden.  Nachdem Sie eine Sicherungskopie gefunden haben, können Sie sie wiederherstellen. 
+---
+= Suche nach Backups
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Mit dem Wiederherstellungsassistenten können Sie nach einer bestimmten Sicherung einer VM oder eines Datenspeichers suchen und diese finden.  Nachdem Sie eine Sicherungskopie gefunden haben, können Sie sie wiederherstellen.
+
+.Schritte
+. Wählen Sie in der GUI des VMware vSphere-Clients in der Symbolleiste *Menü* aus und führen Sie dann einen der folgenden Schritte aus:
++
+|===
+| So zeigen Sie Sicherungen für … an | Gehen Sie wie folgt vor… 
+
+
+| VMs | Wählen Sie die Menüoption *Hosts und Cluster*, wählen Sie dann eine VM aus, wählen Sie dann die Registerkarte *Konfigurieren* und wählen Sie dann *Backups* im Abschnitt * SnapCenter Plug-in for VMware vSphere *. 
+
+
+| Datenspeicher | Wählen Sie die Menüoption *Speicher*, wählen Sie dann einen Datenspeicher aus, wählen Sie dann die Registerkarte *Konfigurieren* und wählen Sie dann *Backups* im Abschnitt * SnapCenter Plug-in for VMware vSphere*. 
+|===
+. Erweitern Sie im linken Navigationsbereich das Rechenzentrum, das die VM oder den Datenspeicher enthält.
+. Optional: Klicken Sie mit der rechten Maustaste auf eine VM oder einen Datenspeicher, wählen Sie dann * SnapCenter Plug-in for VMware vSphere* in der Dropdown-Liste und wählen Sie dann * Wiederherstellen * in der sekundären Dropdown-Liste.
+. Geben Sie im Assistenten *Wiederherstellen* einen Suchnamen ein und wählen Sie *Suchen*.
++
+Sie können die Sicherungsliste filtern, indem Sie das Filtersymbol auswählen und einen Datums- und Zeitbereich auswählen. Außerdem können Sie auswählen, ob Sie Sicherungen mit VMware-Snapshots wünschen, ob Sie bereitgestellte Sicherungen wünschen und den Speicherort. Wählen Sie *OK*.
+
+

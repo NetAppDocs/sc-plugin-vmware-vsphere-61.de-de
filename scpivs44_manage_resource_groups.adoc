@@ -1,0 +1,73 @@
+---
+sidebar: sidebar 
+permalink: scpivs44_manage_resource_groups.html 
+keywords:  
+summary: Sie können Sicherungsressourcengruppen erstellen, ändern und löschen sowie Sicherungsvorgänge für Ressourcengruppen durchführen. 
+---
+= Verwalten von Ressourcengruppen
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Sie können Sicherungsressourcengruppen erstellen, ändern und löschen sowie Sicherungsvorgänge für Ressourcengruppen durchführen.
+
+
+NOTE: Ressourcengruppen werden in der Virtual Storage Console (VSC) als Sicherungsjobs bezeichnet.
+
+
+
+== Anhalten und Fortsetzen von Vorgängen für Ressourcengruppen
+
+Sie können den Start geplanter Vorgänge für eine Ressourcengruppe vorübergehend deaktivieren. Sie können diese Vorgänge später bei Bedarf aktivieren.
+
+.Schritte
+. Wählen Sie im linken Navigationsbereich des SCV-Plug-Ins *Ressourcengruppen*, wählen Sie eine Ressourcengruppe aus und wählen Sie *Anhalten* (oder wählen Sie *Fortsetzen*).
+. Wählen Sie im Bestätigungsfeld zur Bestätigung *OK* aus.
+
+
+.Nach Abschluss
+Auf der Seite „Ressourcengruppen“ lautet der Auftragsstatus für die ausgesetzte Ressource `Under_Maintenance` .  Möglicherweise müssen Sie in der Tabelle nach rechts scrollen, um die Spalte „Auftragsstatus“ anzuzeigen.
+
+Nach der Wiederaufnahme der Sicherungsvorgänge ändert sich der Jobstatus in `Production` .
+
+
+
+== Ändern von Ressourcengruppen
+
+Sie können Ressourcen in Ressourcengruppen in vCenter entfernen oder hinzufügen, Richtlinien trennen oder anhängen, Zeitpläne ändern oder jede andere Option der Ressourcengruppe ändern.
+
+.Informationen zu diesem Vorgang
+Wenn Sie den Namen einer Ressourcengruppe ändern möchten, verwenden Sie in den Namen von VMs, Datenspeichern, Richtlinien, Backups oder Ressourcengruppen nicht die folgenden Sonderzeichen:
+
+% & * $ # @ ! \ / : * ? " < > - | ; ' und Leerzeichen. Ein Unterstrich (_) ist zulässig.
+
+.Schritte
+. Wählen Sie im linken Navigationsbereich des SCV-Plug-Ins *Ressourcengruppen* aus, wählen Sie dann eine Ressourcengruppe aus und wählen Sie *Bearbeiten*.
+. Wählen Sie in der linken Liste des Assistenten *Ressourcengruppe bearbeiten* die Kategorie aus, die Sie ändern möchten, und geben Sie Ihre Änderungen ein.
++
+Sie können Änderungen in mehreren Kategorien vornehmen.  Sie können in dieser Option auch sekundär geschützte Ressourcen bearbeiten.
+
+. Wählen Sie *Weiter*, bis die Seite „Zusammenfassung“ angezeigt wird, und wählen Sie dann *Fertig*.
+
+
+
+
+== Ressourcengruppen löschen
+
+Sie können eine Ressourcengruppe in vCenter löschen, wenn Sie die Ressourcen in der Ressourcengruppe nicht mehr schützen müssen.  Sie müssen sicherstellen, dass alle Ressourcengruppen gelöscht werden, bevor Sie das SnapCenter Plug-in for VMware vSphere aus vCenter entfernen.
+
+.Informationen zu diesem Vorgang
+Alle Löschvorgänge für Ressourcengruppen werden als erzwungene Löschungen ausgeführt. Der Löschvorgang trennt alle Richtlinien von der vCenter-Ressourcengruppe, entfernt die Ressourcengruppe aus dem SnapCenter Plug-in for VMware vSphere und löscht alle Sicherungen und Snapshots der Ressourcengruppe.
+
+
+NOTE: In einer SnapVault -Beziehung kann der letzte Snapshot nicht gelöscht werden. Daher kann die Ressourcengruppe nicht gelöscht werden.  Bevor Sie eine Ressourcengruppe löschen, die Teil einer SnapVault -Beziehung ist, müssen Sie entweder den System Manager oder die ONTAP CLI verwenden, um die SnapVault -Beziehung zu entfernen. Anschließend müssen Sie den letzten Snapshot löschen.
+
+.Schritte
+. Wählen Sie im linken Navigationsbereich des SCV-Plug-Ins *Ressourcengruppen* aus, wählen Sie dann eine Ressourcengruppe aus und wählen Sie *Löschen*.
+. Wählen Sie im Bestätigungsfeld *Ressourcengruppe löschen* zur Bestätigung *OK* aus.
+

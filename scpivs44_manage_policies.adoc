@@ -1,0 +1,81 @@
+---
+sidebar: sidebar 
+permalink: scpivs44_manage_policies.html 
+keywords:  
+summary: Sie können Sicherungsrichtlinien für das SnapCenter Plug-in for VMware vSphere erstellen, ändern, anzeigen, trennen und löschen.  Zur Durchführung von Datenschutzvorgängen sind Richtlinien erforderlich. 
+---
+= Richtlinien verwalten
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Sie können Sicherungsrichtlinien für das SnapCenter Plug-in for VMware vSphere erstellen, ändern, anzeigen, trennen und löschen.  Zur Durchführung von Datenschutzvorgängen sind Richtlinien erforderlich.
+
+
+
+== Richtlinien trennen
+
+Sie können Richtlinien von einer SnapCenter Plug-in for VMware vSphere trennen, wenn diese Richtlinien den Datenschutz für die Ressourcen nicht mehr regeln sollen.  Sie müssen eine Richtlinie trennen, bevor Sie sie entfernen oder die Zeitplanhäufigkeit ändern können.
+
+.Informationen zu diesem Vorgang
+Die Richtlinien zum Trennen von Richtlinien vom SnapCenter Plug-in for VMware vSphere Ressourcengruppen unterscheiden sich von den Richtlinien für SnapCenter -Ressourcengruppen.  Bei einer VMware vSphere-Client-Ressourcengruppe ist es möglich, alle Richtlinien zu trennen, sodass die Ressourcengruppe keine Richtlinie mehr hat.  Um jedoch Datenschutzvorgänge für diese Ressourcengruppe durchführen zu können, müssen Sie mindestens eine Richtlinie anhängen.
+
+.Schritte
+. Wählen Sie im linken Navigationsbereich des SCV-Plug-Ins *Ressourcengruppen* aus, wählen Sie dann eine Ressourcengruppe aus und wählen Sie *Bearbeiten*.
+. Deaktivieren Sie auf der Seite *Richtlinien* des Assistenten *Ressourcengruppe bearbeiten* das Häkchen neben den Richtlinien, die Sie trennen möchten.
++
+Sie können der Ressourcengruppe auch eine Richtlinie hinzufügen, indem Sie die Richtlinie aktivieren.
+
+. Nehmen Sie im Rest des Assistenten weitere Änderungen an der Ressourcengruppe vor und wählen Sie dann *Fertig stellen*.
+
+
+
+
+== Richtlinien ändern
+
+Sie können Richtlinien für ein SnapCenter Plug-in for VMware vSphere Ressourcengruppe ändern.  Sie können die Häufigkeit, Replikationsoptionen, Einstellungen für die Snapshot-Aufbewahrung oder Skriptinformationen ändern, während eine Richtlinie an eine Ressourcengruppe angehängt ist.
+
+.Informationen zu diesem Vorgang
+Das Ändern der Sicherungsrichtlinien des SnapCenter Plug-in for VMware vSphere unterscheidet sich vom Ändern der Sicherungsrichtlinien für anwendungsbasierte SnapCenter -Plug-ins.  Sie müssen Richtlinien nicht von Ressourcengruppen trennen, wenn Sie die Plug-In-Richtlinien ändern.
+
+Bevor Sie die Replikations- oder Aufbewahrungseinstellungen ändern, sollten Sie die möglichen Konsequenzen bedenken.
+
+* Erhöhen der Replikations- oder Aufbewahrungseinstellungen
++
+Es werden weiterhin Backups gesammelt, bis die neue Einstellung erreicht ist.
+
+* Reduzieren der Replikations- oder Aufbewahrungseinstellungen
++
+Sicherungen, die über die neue Einstellung hinausgehen, werden bei der nächsten Sicherung gelöscht.
+
+
+
+
+NOTE: Um einen Richtlinienplan für das SnapCenter Plug-in for VMware vSphere zu ändern, müssen Sie den Zeitplan in der Plug-in-Ressourcengruppe ändern.
+
+.Schritte
+. Wählen Sie im linken Navigationsbereich des SCV-Plug-Ins „Richtlinien“ aus, wählen Sie dann eine Richtlinie aus und wählen Sie „Bearbeiten“ aus.
+. Ändern Sie die Richtlinienfelder.
+. Wenn Sie fertig sind, wählen Sie *Aktualisieren*.
+
+
+Die Änderungen werden wirksam, wenn die nächste geplante Sicherung durchgeführt wird.
+
+
+
+== Richtlinien löschen
+
+Wenn Sie eine konfigurierte Sicherungsrichtlinie für das SnapCenter Plug-in for VMware vSphere nicht mehr benötigen, möchten Sie sie möglicherweise löschen.
+
+.Bevor Sie beginnen
+Sie müssen die Richtlinie von allen Ressourcengruppen in der virtuellen Appliance für SnapCenter getrennt haben, bevor Sie sie löschen können.
+
+.Schritte
+. Wählen Sie im linken Navigationsbereich des SCV-Plug-Ins „Richtlinien“ aus, wählen Sie dann eine Richtlinie aus und wählen Sie „Entfernen“ aus.
+. Wählen Sie im Bestätigungsdialogfeld *OK*.
+

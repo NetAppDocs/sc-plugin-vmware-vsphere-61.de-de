@@ -1,0 +1,193 @@
+---
+sidebar: sidebar 
+permalink: scv48_audit_logs.html 
+keywords:  
+summary: Das Prüfprotokoll ermöglicht die Rückverfolgbarkeit darüber, wer was wann getan hat.  Ein Prüfprotokoll ist eine Sammlung von Ereignissen in chronologischer Reihenfolge und wird in eine Datei innerhalb des Geräts geschrieben. 
+---
+= Überwachungsprotokolle
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Ein Prüfprotokoll ist eine Sammlung von Ereignissen in chronologischer Reihenfolge, die in eine Datei innerhalb des Geräts geschrieben wird.  Die Audit-Logdateien werden generiert unter `/var/log/netapp/audit` Speicherort und die Dateinamen folgen einer der folgenden Namenskonventionen:
+
+* audit.log: Aktive Audit-Protokolldatei, die verwendet wird.
+* audit-%d{yyyy-MM-dd-HH-mm-ss}.log.gz: Audit-Protokolldatei übertragen.  Datum und Uhrzeit im Dateinamen geben an, wann die Datei erstellt wurde, zum Beispiel: audit-2022-12-15-16-28-01.log.gz.
+
+
+In der Benutzeroberfläche des SCV-Plug-ins können Sie die Details des Prüfprotokolls unter *Dashboard* > *Einstellungen* > Registerkarte *Prüfprotokolle* anzeigen und exportieren. Sie können die Betriebsprüfung in den Prüfprotokollen anzeigen.  Die Prüfprotokolle werden mit dem Support-Paket heruntergeladen.
+
+Wenn E-Mail-Einstellungen konfiguriert sind, sendet SCV im Falle eines Fehlers bei der Integritätsprüfung des Audit-Protokolls eine E-Mail-Benachrichtigung.  Ein Fehler bei der Integritätsprüfung des Audit-Protokolls kann auftreten, wenn eine der Dateien manipuliert oder gelöscht wird.
+
+Die Standardkonfigurationen der Auditdateien sind:
+
+* Die verwendete Audit-Protokolldatei kann auf maximal 10 MB anwachsen
+* Es werden maximal 10 Audit-Logdateien aufbewahrt
+
+
+Übertragene Prüfprotokolle werden regelmäßig auf Integrität überprüft.  SCV bietet REST-APIs zum Anzeigen von Protokollen und Überprüfen ihrer Integrität.  Ein integrierter Zeitplan löst einen der folgenden Integritätsstatus aus und weist ihn zu.
+
+|===
+
+
+| Status | Beschreibung 
+
+
+| MANIPULIERT | Der Inhalt der Überwachungsprotokolldatei wurde geändert 
+
+
+| NORMAL | Die Audit-Protokolldatei ist unverändert 
+
+
+| ROLLOVER-LÖSCHEN | - Die Prüfprotokolldatei wird basierend auf der Aufbewahrung gelöscht. - Standardmäßig werden nur 10 Dateien aufbewahrt 
+
+
+| UNERWARTETES LÖSCHEN | Die Audit-Protokolldatei wird gelöscht 
+
+
+| AKTIV | - Audit-Protokolldatei wird verwendet - Gilt nur für audit.log 
+|===
+Ereignisse werden in drei Hauptkategorien eingeteilt:
+
+* Datenschutzereignisse
+* Ereignisse der Wartungskonsole
+* Ereignisse in der Admin-Konsole
+
+
+
+
+== Datenschutzereignisse
+
+Die Ressourcen in SCV sind:
+
+* Speichersystem
+* Ressourcengruppe
+* Politik
+* Sicherung
+* Abonnement
+* Konto
+
+
+In der folgenden Tabelle sind die Vorgänge aufgeführt, die für jede Ressource ausgeführt werden können:
+
+|===
+
+
+| *Ressourcen* | *Operationen* 
+
+
+| Speichersystem | Erstellt, geändert, gelöscht 
+
+
+| Abonnement | Erstellt, geändert, gelöscht 
+
+
+| Konto | Erstellt, geändert, gelöscht 
+
+
+| Ressourcengruppe | Erstellt, geändert, gelöscht, ausgesetzt, fortgesetzt 
+
+
+| Politik | Erstellt, geändert, gelöscht 
+
+
+| Sicherung | Erstellt, umbenannt, gelöscht, gemountet, unmountet, VMDK wiederhergestellt, VM wiederhergestellt, VMDK anhängen, VMDK trennen, Gastdatei wiederherstellen 
+|===
+
+
+== Ereignisse der Wartungskonsole
+
+Die Verwaltungsvorgänge in der Wartungskonsole werden geprüft.  Verfügbare Optionen für die Wartungskonsole sind:
+
+. Dienste starten/stoppen
+. Benutzernamen und Passwort ändern
+. MySQL-Passwort ändern
+. Konfigurieren der MySQL-Sicherung
+. MySQL-Backup wiederherstellen
+. Ändern Sie das Benutzerkennwort „maint“.
+. Zeitzone ändern
+. NTP-Server ändern
+. SSH-Zugriff deaktivieren
+. Erhöhen Sie die Größe der Jail-Festplatte
+. Upgrade
+. Installieren Sie VMware Tools (wir arbeiten daran, diese durch Open-VM-Tools zu ersetzen)
+. IP-Adresseinstellungen ändern
+. Sucheinstellungen für Domänennamen ändern
+. Statische Routen ändern
+. Zugriff auf die Diagnose-Shell
+. Aktivieren Sie den Ferndiagnosezugriff
+
+
+
+
+== Ereignisse in der Admin-Konsole
+
+Die folgenden Vorgänge in der Benutzeroberfläche der Admin-Konsole werden überwacht:
+
+* Einstellungen
++
+** Administratoranmeldeinformationen ändern
+** Zeitzone ändern
+** NTP-Server ändern
+** IPv4/IPv6-Adresseinstellungen ändern
+
+
+* Konfiguration
++
+** Ändern der vCenter-Anmeldeinformationen
+** Plug-in aktivieren/deaktivieren
+
+
+
+
+
+
+== Konfigurieren von Syslog-Servern
+
+Prüfprotokolle werden innerhalb der Appliance gespeichert und regelmäßig auf Integrität überprüft.  Durch die Ereignisweiterleitung können Sie Ereignisse vom Quell- oder Weiterleitungscomputer abrufen und auf einem zentralen Computer, dem Syslog-Server, speichern.  Die Daten werden während der Übertragung zwischen Quelle und Ziel verschlüsselt.
+
+.Bevor Sie beginnen
+Sie müssen über Administratorrechte verfügen.
+
+.Informationen zu diesem Vorgang
+Diese Aufgabe hilft Ihnen bei der Konfiguration des Syslog-Servers.
+
+.Schritte
+. Melden Sie sich beim SnapCenter Plug-in for VMware vSphere an.
+. Wählen Sie im linken Navigationsbereich *Einstellungen* > *Überwachungsprotokolle* > *Einstellungen*.
+. Wählen Sie im Bereich *Audit-Protokolleinstellungen* die Option *Audit-Protokolle an Syslog-Server senden*
+. Geben Sie die folgenden Details ein:
++
+** Syslog-Server-IP
+** Syslog-Server-Port
+** RFC-Format
+** Syslog-Server-Zertifikat
+
+
+. Wählen Sie *SPEICHERN*, um die Syslog-Servereinstellungen zu speichern.
+
+
+
+
+== Ändern der Überwachungsprotokolleinstellungen
+
+Sie können die Standardkonfigurationen der Protokolleinstellungen ändern.
+
+.Bevor Sie beginnen
+Sie müssen über Administratorrechte verfügen.
+
+.Informationen zu diesem Vorgang
+Diese Aufgabe hilft Ihnen, die Standardeinstellungen des Überwachungsprotokolls zu ändern.
+
+.Schritte
+. Melden Sie sich beim SnapCenter Plug-in for VMware vSphere an.
+. Wählen Sie im linken Navigationsbereich *Einstellungen* > *Überwachungsprotokolle* > *Einstellungen*.
+. Geben Sie im Bereich *Audit-Protokolleinstellungen* die maximale Anzahl von Audit-Protokolldateien und die Größenbeschränkung für Audit-Protokolldateien ein.
+. Wählen Sie die Option *Auditprotokolle an Syslog-Server senden*, wenn Sie die Protokolle an den Syslog-Server senden möchten.  Geben Sie die Details des Servers ein.
+. Speichern Sie die Einstellungen.
+

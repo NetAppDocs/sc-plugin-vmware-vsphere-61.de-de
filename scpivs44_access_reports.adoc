@@ -1,0 +1,67 @@
+---
+sidebar: sidebar 
+permalink: scpivs44_access_reports.html 
+keywords:  
+summary: Sie können über das Dashboard Berichte für einen oder mehrere Jobs anfordern. 
+---
+= Zugriffsberichte
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Sie können über das Dashboard Berichte für einen oder mehrere Jobs anfordern.
+
+Die Registerkarte „Berichte“ enthält Informationen zu den Jobs, die auf der Seite „Jobs“ im Dashboard ausgewählt sind.  Wenn keine Jobs ausgewählt sind, ist die Registerkarte „Berichte“ leer.
+
+.Schritte
+. Wählen Sie auf der Verknüpfungsseite des vCenter-Clients das SnapCenter Plug-in for VMware vSphere (SCV) aus.
+. Wählen Sie im linken Navigationsbereich von SCV die Registerkarte *Dashboard* > *Berichte* aus.
+. Für Sicherungsberichte können Sie Folgendes tun:
++
+.. Ändern des Berichts
++
+Wählen Sie das Filtersymbol aus, um den Zeitraum, den Auftragsstatustyp, die Ressourcengruppen und die Richtlinien zu ändern, die in den Bericht aufgenommen werden sollen.
+
+.. Erstellen Sie einen detaillierten Bericht
++
+Doppelklicken Sie auf einen beliebigen Job, um einen ausführlichen Bericht für diesen Job zu erstellen.
+
+
+
+. Optional: Wählen Sie auf der Registerkarte „Berichte“ die Option „Herunterladen“ und wählen Sie das Format (HTML oder CSV).
++
+Sie können auch das Download-Symbol auswählen, um Plug-In-Protokolle herunterzuladen.
+
+
+
+
+
+== Berichtstypen vom VMware vSphere-Client
+
+Der VMware vSphere-Client für SnapCenter bietet anpassbare Berichtsoptionen, die Ihnen Details zu Ihren Datenschutzaufträgen und dem Status der Plug-In-Ressourcen liefern.  Sie können nur Berichte zum primären Schutz erstellen.
+
+
+NOTE: Sicherungspläne werden in der Zeitzone ausgeführt, in der das SnapCenter Plug-in for VMware vSphere bereitgestellt wird. vCenter meldet Daten in der Zeitzone, in der sich das vCenter befindet.  Wenn sich das SnapCenter Plug-in for VMware vSphere und das vCenter in unterschiedlichen Zeitzonen befinden, stimmen die Daten im Dashboard des VMware vSphere-Clients möglicherweise nicht mit den Daten in den Berichten überein.
+
+Das Dashboard zeigt Informationen zu migrierten Sicherungen erst an, nachdem Sicherungen nach der Migration durchgeführt wurden.
+
+|===
+| Berichtstyp | Beschreibung 
+
+
+| Sicherungsbericht | Zeigt Übersichtsdaten zu Sicherungsaufträgen an.  Wählen Sie einen Abschnitt/Status im Diagramm aus, um auf der Registerkarte *Berichte* eine Liste der Jobs mit diesem Status anzuzeigen.  Für jeden Job listet der Bericht die Job-ID, die entsprechende Ressourcengruppe, die Sicherungsrichtlinie, Startzeit und Dauer, den Status und die Jobdetails auf, einschließlich des Jobnamens (Snapshot-Namens), wenn der Job abgeschlossen ist, sowie etwaige Warn- oder Fehlermeldungen.  Sie können die Berichtstabelle im HTML- oder CSV-Format herunterladen.  Sie können auch die Job Monitor-Jobprotokolle für alle Jobs herunterladen (nicht nur für die Jobs im Bericht).  Gelöschte Backups sind nicht im Bericht enthalten. 
+
+
+| Mount-Bericht | Zeigt Übersichtsdaten zu Mount-Jobs an.  Wählen Sie einen Abschnitt/Status im Diagramm aus, um auf der Registerkarte „Berichte“ eine Liste der Jobs mit diesem Status anzuzeigen.  Für jeden Auftrag listet der Bericht die Auftrags-ID, den Auftragsstatus, den Auftragsnamen sowie die Start- und Endzeiten des Auftrags auf.  Der Jobname enthält den Snapshot-Namen.  Zum Beispiel: `Mount Backup <snapshot-copy-name>` Sie können die Berichtstabelle im HTML- oder CSV-Format herunterladen.  Sie können auch die Job Monitor-Jobprotokolle für alle Jobs herunterladen (nicht nur für die Jobs im Bericht). 
+
+
+| Wiederherstellungsbericht | Zeigt eine Übersicht über Statusinformationen zu Wiederherstellungsaufträgen an.  Wählen Sie einen Abschnitt/Status im Diagramm aus, um auf der Registerkarte „Berichte“ eine Liste der Jobs mit diesem Status anzuzeigen.  Für jeden Auftrag listet der Bericht die Auftrags-ID, den Auftragsstatus, den Auftragsnamen sowie die Start- und Endzeiten des Auftrags auf.  Der Jobname enthält den Snapshot-Namen.  Zum Beispiel: `Restore Backup <snapshot-copy-name>` Sie können die Berichtstabelle im HTML- oder CSV-Format herunterladen.  Sie können auch die Job Monitor-Jobprotokolle für alle Jobs herunterladen (nicht nur für die Jobs im Bericht). 
+
+
+| Bericht zum letzten Schutzstatus von VMs oder Datenspeichern | Zeigt Übersichtsinformationen zum Schutzstatus für die konfigurierte Anzahl von Tagen für VMs und Datenspeicher an, die vom SnapCenter Plug-in for VMware vSphere verwaltet werden.  Der Standardwert beträgt 7 Tage.  Informationen zum Ändern des Werts in der Eigenschaftendatei finden Sie unterlink:scpivs44_modify_configuration_default_values.html["Ändern der Konfigurationsstandardwerte"] .  Wählen Sie einen Abschnitt/Status im primären Schutzdiagramm aus, um auf der Registerkarte *Berichte* eine Liste der VMs oder Datenspeicher mit diesem Status anzuzeigen.  Der VM- oder Datastore-Schutzstatusbericht für geschützte VMs und Datastores zeigt die Namen der VMs oder Datastores an, die während der konfigurierten Anzahl von Tagen gesichert wurden, den Namen des letzten Snapshots sowie die Start- und Endzeiten für den letzten Sicherungslauf.  Der VM- oder Datenspeicher-Schutzstatusbericht für ungeschützte VMs oder Datenspeicher zeigt die Namen der VMs oder Datenspeicher an, für die während der konfigurierten Anzahl von Tagen keine erfolgreichen Sicherungen durchgeführt wurden.  Sie können die Berichtstabelle im HTML- oder CSV-Format herunterladen.  Sie können auch die Job Monitor-Jobprotokolle für alle Jobs herunterladen (nicht nur für die Jobs im Bericht).  Dieser Bericht wird stündlich aktualisiert, wenn der Plug-In-Cache aktualisiert wird.  Daher werden im Bericht möglicherweise keine VMs oder Datenspeicher angezeigt, die kürzlich gesichert wurden. 
+|===

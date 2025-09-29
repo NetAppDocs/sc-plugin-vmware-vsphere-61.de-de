@@ -1,0 +1,38 @@
+---
+sidebar: sidebar 
+permalink: scpivs44_back_up_resource_groups_on_demand.html 
+keywords:  
+summary: Sicherungsvorgänge werden für alle in einer Ressourcengruppe definierten Ressourcen ausgeführt. Wenn einer Ressourcengruppe eine Richtlinie zugeordnet und ein Zeitplan konfiguriert ist, werden die Sicherungen automatisch gemäß dem Zeitplan durchgeführt. 
+---
+= Sichern Sie Ressourcengruppen bei Bedarf
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Sicherungsvorgänge werden für alle in einer Ressourcengruppe definierten Ressourcen ausgeführt. Wenn einer Ressourcengruppe eine Richtlinie zugeordnet und ein Zeitplan konfiguriert ist, werden die Sicherungen automatisch gemäß dem Zeitplan durchgeführt.
+
+
+NOTE: ASA R2 Backup erstellt Snapshots der Konsistenzgruppe und stellt eine primäre Konsistenzgruppe bereit, wenn die angegebene Ressource noch nicht darüber verfügt.
+
+.Bevor Sie beginnen
+Sie müssen eine Ressourcengruppe mit einer angehängten Richtlinie erstellt haben.
+
+
+IMPORTANT: Starten Sie keinen On-Demand-Sicherungsauftrag, wenn bereits ein Auftrag zum Sichern des SnapCenter Plug-in for VMware vSphere MySQL-Datenbank ausgeführt wird.  Verwenden Sie die Wartungskonsole, um den konfigurierten Sicherungszeitplan für die MySQL-Datenbank anzuzeigen.
+
+.Informationen zu diesem Vorgang
+In früheren Versionen der Virtual Storage Console (VSC) konnten Sie eine On-Demand-Sicherung durchführen, ohne dass ein Sicherungsauftrag für eine VM oder einen Datenspeicher konfiguriert war.  Für das SnapCenter Plug-in for VMware vSphere müssen sich VMs und Datenspeicher jedoch in einer Ressourcengruppe befinden, bevor Sie Sicherungen durchführen können.
+
+.Schritte
+. Wählen Sie im linken Navigationsbereich des SCV-Plugins *Ressourcengruppen*, wählen Sie dann eine Ressourcengruppe aus und wählen Sie dannimage:scpivs44_image38.png["Wiedergabesymbol"] *Jetzt ausführen*, um die Sicherung zu starten.
+. Wenn für die Ressourcengruppe mehrere Richtlinien konfiguriert sind, wählen Sie im Dialogfeld *Jetzt sichern* die Richtlinie aus, die Sie für diesen Sicherungsvorgang verwenden möchten.
+. Wählen Sie *OK*, um die Sicherung zu starten.
+. Optional: Überwachen Sie den Vorgangsfortschritt, indem Sie unten im Fenster *Letzte Aufgaben* auswählen oder im Dashboard *Job Monitor* für weitere Details.  .Ergebnis
+
+
+Wenn der Stilllegungsvorgang für eine der VMs im Backup fehlschlägt, wird das Backup mit einer Warnung abgeschlossen und als nicht VM-konsistent gekennzeichnet, auch wenn in der ausgewählten Richtlinie VM-Konsistenz ausgewählt ist. In diesem Fall ist es möglich, dass einige der VMs erfolgreich stillgelegt wurden.  Im Job-Monitor wird in den Details der fehlgeschlagenen VM die Stilllegung als fehlgeschlagen angezeigt.

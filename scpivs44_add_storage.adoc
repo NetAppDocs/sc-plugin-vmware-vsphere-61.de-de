@@ -1,0 +1,21 @@
+---
+sidebar: sidebar 
+permalink: scpivs44_add_storage.html 
+keywords:  
+summary:  
+---
+= Speicher hinzufügen
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Befolgen Sie die Schritte in diesem Abschnitt, um Speicher hinzuzufügen.
+
+. Wählen Sie im linken Navigationsbereich des SCV-Plug-Ins *Speichersysteme* und dann die Option *Hinzufügen* aus.
+. Geben Sie im Dialogfeld „Speichersystem hinzufügen“ die grundlegenden SVM- oder Clusterinformationen ein und wählen Sie *Hinzufügen*.
+

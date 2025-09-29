@@ -1,0 +1,47 @@
+---
+sidebar: sidebar 
+permalink: rename_storage.html 
+keywords:  
+summary: Sie können den Speicher mithilfe der REST-API umbenennen. 
+---
+= Wiederherstellen der Sicherung des umbenannten Speichers
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Wenn der Speicher umbenannt wird, schlugen Workflows, die vor der Umbenennung erstellte Sicherungen verwendeten, fehl.  Mit der Einführung der Funktion zum Umbenennen von Backups, die ausschließlich über die REST-API zugänglich ist, ist es jetzt möglich, die Backups zu verwenden, die vor der Umbenennung des Speichers erstellt wurden.  Der Arbeitsablauf und die Verwendung der REST-API werden unten beschrieben.
+
+
+NOTE: Das ASA R2-Speichersystem unterstützt die Funktion zur Benennung aktueller Snapshots nicht.
+
+.Schritte
+. Fügen Sie die neue Speicherverbindung hinzu oder aktualisieren Sie sie und stellen Sie sicher, dass der neue Cluster- oder SVM-Name in SCV angezeigt wird.
+. Starten Sie den Dienst neu, um die Caches wie im KB-Artikel beschrieben zu aktualisieren: https://kb.netapp.com/mgmt/SnapCenter/SCV_backups_fail_after_SVM_rename["SCV-Sicherungen schlagen nach der SVM-Umbenennung fehl"]
+. Erstellen Sie ein neues Backup.
+. Verwenden Sie die Sicherungsdetails, um die alten und neuen Speichernamen zu finden.
+. Wählen Sie im Bildschirm *Backups* des vSphere-Clients das Backup aus, um dessen Details anzuzeigen.
+. Greifen Sie über die URL auf Swagger zu: `\https://<SCV-IP>:8144/api/swagger-ui/index.html`
++
+Verwenden Sie die folgende API, um den Speicher umzubenennen:
+
++
+PATCH /4.1/Speichersystem
+
++
+Beispiel: { "existingSVM": { "name": "string" }, "newSVM": { "name": "string" } }
+
++
+Antwort:
+
++
+{ "statusMessage": "OK", "statusCode": 200, "responseMessage": [ "Speichersystem erfolgreich umbenannt."  ] }
+
++
+Nach dem Ausführen dieser API können Sie alle Workflows ausführen, einschließlich des Wiederherstellungsvorgangs aus der alten Sicherung.
+
+

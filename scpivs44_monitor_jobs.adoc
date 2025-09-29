@@ -1,0 +1,31 @@
+---
+sidebar: sidebar 
+permalink: scpivs44_monitor_jobs.html 
+keywords:  
+summary: Nachdem Sie mit dem VMware vSphere-Client einen Datenschutzvorgang durchgeführt haben, können Sie den Jobstatus auf der Registerkarte „Job Monitor“ im Dashboard überwachen und Jobdetails anzeigen. 
+---
+= Überwachen von Jobs
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Nachdem Sie mit dem VMware vSphere-Client einen Datenschutzvorgang durchgeführt haben, können Sie den Jobstatus auf der Registerkarte „Job Monitor“ im Dashboard überwachen und Jobdetails anzeigen.
+
+.Schritte
+. Wählen Sie auf der Verknüpfungsseite des vCenter-Clients das SnapCenter Plug-in for VMware vSphere (SCV) aus.
+. Wählen Sie im linken Navigationsbereich von SCV *Dashboard* aus.
+. Wenn zwei oder mehr vCenter im verknüpften Modus konfiguriert sind, wählen Sie die SCV-Plug-In-Instanz und wählen Sie die Registerkarte *Job Monitor*.  Auf der Registerkarte „Job Monitor“ werden alle Jobs und ihr Status sowie ihre Start- und Endzeit aufgelistet.  Wenn die Jobnamen lang sind, müssen Sie möglicherweise nach rechts scrollen, um die Start- und Endzeiten anzuzeigen.  Die Anzeige wird alle 30 Sekunden aktualisiert.
++
+** Wählen Sie das Aktualisierungssymbol in der Symbolleiste, um die Anzeige bei Bedarf zu aktualisieren.
+** Wählen Sie das Filtersymbol aus, um den Zeitraum, den Typ, das Tag und den Status der Jobs auszuwählen, die angezeigt werden sollen.  Der Filter berücksichtigt die Groß- und Kleinschreibung.
+** Wählen Sie das Aktualisierungssymbol im Fenster „Auftragsdetails“ aus, um die Anzeige während der Ausführung des Auftrags zu aktualisieren.
+
+
+
+
+Wenn das Dashboard keine Jobinformationen anzeigt, lesen Sie https://kb.netapp.com/Advice_and_Troubleshooting/Data_Protection_and_Security/SnapCenter/SnapCenter_vSphere_web_client_dashboard_does_not_display_jobs["KB-Artikel: SnapCenter vSphere-Client-Dashboard zeigt keine Jobs an"^] .

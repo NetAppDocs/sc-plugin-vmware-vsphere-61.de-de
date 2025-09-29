@@ -1,0 +1,50 @@
+---
+sidebar: sidebar 
+permalink: scpivs44_access_rest_apis_using_the_swagger_api_web_page.html 
+keywords:  
+summary: REST-APIs werden über die Swagger-Webseite bereitgestellt. Sie können auf die Swagger-Webseite zugreifen, um den SnapCenter -Server oder das SnapCenter Plug-in for VMware vSphere REST-APIs anzuzeigen und manuell einen API-Aufruf zu tätigen.  Verwenden Sie das SnapCenter Plug-in for VMware vSphere REST-APIs, um Schutzvorgänge auf VMs und Datenspeichern durchzuführen. 
+---
+= Greifen Sie über die Swagger-API-Webseite auf REST-APIs zu
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+REST-APIs werden über die Swagger-Webseite bereitgestellt. Sie können auf die Swagger-Webseite zugreifen, um entweder den SnapCenter -Server oder das SnapCenter Plug-in for VMware vSphere REST-APIs anzuzeigen und manuell einen API-Aufruf zu tätigen.  Verwenden Sie das SnapCenter Plug-in for VMware vSphere REST-APIs, um Vorgänge auf VMs und Datenspeichern auszuführen.
+
+Das Plug-in verfügt über andere Swagger-Webseiten als die Swagger-Webseiten des SnapCenter Servers.
+
+.Bevor Sie beginnen
+Für SnapCenter Plug-in for VMware vSphere REST-APIs müssen Sie entweder die IP-Adresse oder den Hostnamen des SnapCenter Plug-in for VMware vSphere kennen.
+
+
+NOTE: Das Plug-In unterstützt nur REST-APIs zum Zweck der Integration mit Anwendungen von Drittanbietern und unterstützt keine PowerShell-Cmdlets oder eine CLI.
+
+.Schritte
+. Geben Sie in einem Browser die URL ein, um auf die Swagger-Webseite des Plug-ins zuzugreifen:
++
+`\https://<SCV_IP>:8144/api/swagger-ui/index.html`
+
++
+
+IMPORTANT: Verwenden Sie die folgenden Zeichen nicht in der REST-API-URL: +, .  , %, Und &.
+
++
+.Beispiel
+Greifen Sie auf das SnapCenter Plug-in for VMware vSphere REST-APIs zu:
+
++
+`\https://<SCV_IP>:8144/api/swagger-ui/index.html`
+
++
+`\https://OVAhost:8144/api/swagger-ui/index.html`
+
++
+Melden Sie sich an und verwenden Sie den vCenter-Authentifizierungsmechanismus, um das Token zu generieren.
+
+. Wählen Sie einen API-Ressourcentyp aus, um die APIs in diesem Ressourcentyp anzuzeigen.
+

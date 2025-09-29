@@ -1,0 +1,81 @@
+---
+sidebar: sidebar 
+permalink: scpivs44_attach_vmdks_to_a_vm.html 
+keywords:  
+summary: Sie können eine oder mehrere VMDKs aus einem Backup an die übergeordnete VM oder an eine alternative VM auf demselben ESXi-Host oder an eine alternative VM auf einem alternativen ESXi-Host anhängen, der vom selben vCenter oder einem anderen vCenter im verknüpften Modus verwaltet wird.  VMs in herkömmlichen Datenspeichern und in vVol-Datenspeichern werden unterstützt. 
+---
+= VMDKs an eine VM oder vVol-VM anhängen
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Sie können eine oder mehrere VMDKs aus einem Backup an die übergeordnete VM oder an eine alternative VM auf demselben ESXi-Host oder an eine alternative VM auf einem alternativen ESXi-Host anhängen, der vom selben vCenter oder einem anderen vCenter im verknüpften Modus verwaltet wird.  VMs in herkömmlichen Datenspeichern und in vVol-Datenspeichern werden unterstützt.
+
+Dadurch ist es einfacher, eine oder mehrere einzelne Dateien von einem Laufwerk wiederherzustellen, anstatt das gesamte Laufwerk wiederherzustellen.  Sie können das VMDK trennen, nachdem Sie die benötigten Dateien wiederhergestellt oder darauf zugegriffen haben.
+
+.Informationen zu diesem Vorgang
+Sie haben folgende Anhängemöglichkeiten:
+
+* Sie können virtuelle Datenträger aus einem primären oder sekundären Backup anhängen.
+* Sie können virtuelle Datenträger an die übergeordnete VM (dieselbe VM, mit der der virtuelle Datenträger ursprünglich verknüpft war) oder an eine alternative VM auf demselben ESXi-Host anhängen.
+
+
+Für das Anschließen virtueller Datenträger gelten die folgenden Einschränkungen:
+
+* Anfüge- und Trennvorgänge werden für Vorlagen virtueller Maschinen nicht unterstützt.
+* Wenn mehr als 15 VMDKs an einen iSCSI-Controller angeschlossen sind, kann die virtuelle Maschine für das SnapCenter Plug-in for VMware vSphere aufgrund von VMware-Einschränkungen keine VMDK-Einheitennummern über 15 finden.
++
+Fügen Sie in diesem Fall die SCSi-Controller manuell hinzu und versuchen Sie den Anschlussvorgang erneut.
+
+* Sie können eine virtuelle Festplatte, die im Rahmen einer Gastdateiwiederherstellung angeschlossen oder gemountet wurde, nicht manuell anschließen.
+* Anfügen- und Wiederherstellungsvorgänge verbinden VMDKs mithilfe des Standard-SCSi-Controllers.  Wenn jedoch VMDKs gesichert werden, die an eine VM mit einer NVMe-Festplatte angeschlossen sind, verwenden die Anfüge- und Wiederherstellungsvorgänge den NVMe-Controller, sofern verfügbar.
+
+
+.Bevor Sie beginnen
+Führen Sie die folgenden Schritte aus, um der Festplatte einen NVMe-Controller hinzuzufügen.
+
+. Melden Sie sich beim vCenter-Client an
+. Wählen Sie die VM aus dem VMFS-Datenspeicher aus
+. Klicken Sie mit der rechten Maustaste auf die VM und gehen Sie zu *Einstellungen bearbeiten*
+. Wählen Sie im Fenster „Einstellungen bearbeiten“ die Option „Neues Gerät hinzufügen“ > „NVMe-Controller“ aus.
+
+
+.Schritte
+. Wählen Sie in der GUI des VMware vSphere-Clients in der Symbolleiste *Menü* und dann *Hosts und Cluster* aus der Dropdown-Liste.
+. Klicken Sie im linken Navigationsbereich mit der rechten Maustaste auf eine VM und wählen Sie dann * SnapCenter Plug-in for VMware vSphere* > *Virtuelle Festplatte(n) anhängen*.
+. Wählen Sie im Fenster *Virtuelle Festplatte anhängen* im Abschnitt *Backup* ein Backup aus.
++
+Sie können die Sicherungsliste filtern, indem Sie das Filtersymbol auswählen und einen Datums- und Zeitbereich auswählen. Außerdem können Sie auswählen, ob Sie Sicherungen mit VMware-Snapshots wünschen, ob Sie gemountete Sicherungen wünschen und den Speicherort. Wählen Sie *OK*.
+
+. Wählen Sie im Abschnitt *Datenträger auswählen* einen oder mehrere Datenträger aus, die Sie anschließen möchten, und den Speicherort (primär oder sekundär), von dem aus Sie die Verbindung herstellen möchten.
++
+Sie können den Filter ändern, um primäre und sekundäre Standorte anzuzeigen.
+
+. Standardmäßig werden die ausgewählten virtuellen Datenträger an die übergeordnete VM angeschlossen. Um die ausgewählten virtuellen Datenträger an eine alternative VM im selben ESXi-Host anzuhängen, wählen Sie *Klicken Sie hier, um eine Anbindung an eine alternative VM herzustellen* und geben Sie die alternative VM an.
+. Wählen Sie *Anhängen*.
+. Optional: Überwachen Sie den Vorgangsfortschritt im Abschnitt *Letzte Aufgaben*.
++
+Aktualisieren Sie den Bildschirm, um aktualisierte Informationen anzuzeigen.
+
+. Überprüfen Sie, ob die virtuelle Festplatte angeschlossen ist, indem Sie die folgenden Schritte ausführen:
++
+.. Wählen Sie *Menü* in der Symbolleiste und wählen Sie dann *VMs und Vorlagen* aus der Dropdown-Liste.
+.. Klicken Sie im linken Navigationsbereich mit der rechten Maustaste auf eine VM und wählen Sie dann in der Dropdownliste *Einstellungen bearbeiten* aus.
+.. Erweitern Sie im Fenster *Einstellungen bearbeiten* die Liste für jede Festplatte, um die Liste der Festplattendateien anzuzeigen.
++
+image:scpivs44_image23.png["Fenster „Einstellungen bearbeiten“"]
+
++
+Auf der Seite „Einstellungen bearbeiten“ werden die Festplatten auf der VM aufgelistet.  Sie können die Details für jede Festplatte erweitern, um die Liste der angeschlossenen virtuellen Festplatten anzuzeigen.
+
+
+
+
+
+.Ergebnis
+Sie können vom Host-Betriebssystem aus auf die angeschlossenen Datenträger zugreifen und dann die benötigten Informationen von den Datenträgern abrufen.

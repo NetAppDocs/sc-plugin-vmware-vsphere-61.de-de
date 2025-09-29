@@ -1,0 +1,63 @@
+---
+sidebar: sidebar 
+permalink: scpivs44_restore_vmdks_from_backups.html 
+keywords:  
+summary: Sie können vorhandene VMDKs oder gelöschte oder getrennte VMDKs entweder aus einem primären oder sekundären Backup herkömmlicher VMs oder vVol-VMs wiederherstellen. 
+---
+= Wiederherstellen von VMDKs aus Backups
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Sie können vorhandene VMDKs oder gelöschte oder getrennte VMDKs entweder aus einem primären oder sekundären Backup herkömmlicher VMs oder vVol-VMs wiederherstellen.
+
+Sie können eine oder mehrere virtuelle Maschinenfestplatten (VMDKs) auf einer VM im selben Datenspeicher wiederherstellen.
+
+
+TIP: Aktivieren Sie die VMware-Anwendung vStorage API for Array Integration (VAAI), um die Leistung von Wiederherstellungsvorgängen in NFS-Umgebungen zu verbessern.
+
+.Bevor Sie beginnen
+* Es muss ein Backup vorhanden sein.
++
+Sie müssen mit dem SnapCenter Plug-in for VMware vSphere ein Backup der VM erstellt haben.
+
+* Die VM darf sich nicht im Transit befinden.
++
+Die VM, die Sie wiederherstellen möchten, darf sich nicht im Zustand vMotion oder Storage vMotion befinden.
+
+
+
+.Informationen zu diesem Vorgang
+* Wenn das VMDK gelöscht oder von der VM getrennt wird, wird das VMDK beim Wiederherstellungsvorgang an die VM angehängt.
+* Ein Wiederherstellungsvorgang kann fehlschlagen, wenn die Speicherebene des FabricPool , in dem sich die VM befindet, nicht verfügbar ist.
+* Anfügen- und Wiederherstellungsvorgänge verbinden VMDKs mithilfe des Standard-SCSi-Controllers.  Wenn jedoch VMDKs gesichert werden, die an eine VM mit einer NVMe-Festplatte angeschlossen sind, verwenden die Anfüge- und Wiederherstellungsvorgänge den NVMe-Controller, sofern verfügbar.
+
+
+.Schritte
+. Wählen Sie in der GUI des VMware vSphere-Clients in der Symbolleiste *Menü* und dann *VMs und Vorlagen* aus der Dropdown-Liste.
+. Klicken Sie im linken Navigationsbereich mit der rechten Maustaste auf eine VM, wählen Sie dann in der Dropdownliste „SnapCenter Plug-in for VMware vSphere“ und anschließend in der sekundären Dropdownliste „Wiederherstellen“ aus.
+. Wählen Sie im Assistenten *Wiederherstellen* auf der Seite „Sicherung auswählen“ die Sicherungskopie aus, von der Sie wiederherstellen möchten.
++
+Sie können nach einem bestimmten Backup-Namen oder einem Teil des Backup-Namens suchen oder die Backup-Liste filtern, indem Sie das Filtersymbol auswählen und einen Datums- und Zeitbereich auswählen. Wählen Sie aus, ob Sie Backups mit VMware-Snapshots wünschen, ob Sie gemountete Backups wünschen und ob es sich um einen primären oder sekundären Speicherort handelt.  Wählen Sie *OK*, um zum Assistenten zurückzukehren.
+
+. Wählen Sie auf der Seite *Bereich auswählen* das Wiederherstellungsziel aus.
++
+|===
+| Wiederherstellen auf… | Geben Sie das Wiederherstellungsziel an… 
+
+
+| Der ursprüngliche Datenspeicher | Wählen Sie *Bestimmte Festplatte* aus der Dropdown-Liste und wählen Sie dann *Weiter*.  In der Datastore-Auswahltabelle können Sie beliebige VMDKs auswählen oder die Auswahl aufheben. 
+
+
+| Ein alternativer Datenspeicher an einem alternativen Standort | Wählen Sie den Zieldatenspeicher und wählen Sie einen anderen Datenspeicher aus der Liste aus. 
+|===
+. Wählen Sie auf der Seite *Speicherort auswählen* den Snapshot aus, den Sie wiederherstellen möchten (primär oder sekundär).
+. Überprüfen Sie die Seite „Zusammenfassung“ und wählen Sie dann *Fertig*.
+. Optional: Überwachen Sie den Vorgangsfortschritt, indem Sie unten auf dem Bildschirm *Letzte Aufgaben* auswählen.
+. Aktualisieren Sie den Bildschirm, um aktualisierte Informationen anzuzeigen.
+

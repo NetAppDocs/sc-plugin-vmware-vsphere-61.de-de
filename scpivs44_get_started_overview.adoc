@@ -1,0 +1,19 @@
+---
+sidebar: sidebar 
+permalink: scpivs44_get_started_overview.html 
+keywords:  
+summary: Um SnapCenter -Funktionen zum Schutz von VMs, Datenspeichern und anwendungskonsistenten Datenbanken auf virtualisierten Maschinen zu verwenden, müssen Sie das SnapCenter Plug-in for VMware vSphere bereitstellen. 
+---
+= Bereitstellungsübersicht
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Um SnapCenter -Funktionen zum Schutz von VMs, Datenspeichern und anwendungskonsistenten Datenbanken auf virtualisierten Maschinen zu verwenden, müssen Sie das SnapCenter Plug-in for VMware vSphere bereitstellen.
+
+Vorhandene SnapCenter Benutzer müssen einen anderen Bereitstellungsworkflow verwenden als neue SnapCenter Benutzer.

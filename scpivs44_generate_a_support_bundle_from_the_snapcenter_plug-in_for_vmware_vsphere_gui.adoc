@@ -1,0 +1,36 @@
+---
+sidebar: sidebar 
+permalink: scpivs44_generate_a_support_bundle_from_the_snapcenter_plug-in_for_vmware_vsphere_gui.html 
+keywords:  
+summary: Sie können ein Support-Paket aus dem SnapCenter Plug-in for VMware vSphere -GUI generieren. 
+---
+= Generieren Sie ein Support-Paket aus dem SnapCenter Plug-in for VMware vSphere GUI
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+.Bevor Sie beginnen
+[role="lead"]
+Um sich beim SnapCenter Plug-in for VMware vSphere Verwaltungs-GUI anzumelden, müssen Sie die IP-Adresse und die Anmeldeinformationen kennen. Sie müssen sich auch das von der Wartungskonsole generierte MFA-Token notieren.
+
+* Die IP-Adresse wurde angezeigt, als das SnapCenter Plug-in for VMware vSphere bereitgestellt wurde.
+* Verwenden Sie die Anmeldeinformationen, die Sie während der Bereitstellung des SnapCenter Plug-in for VMware vSphere erhalten haben oder die später geändert wurden.
+* Generieren Sie mithilfe der Systemkonfigurationsoptionen der Wartungskonsole ein 6-stelliges MFA-Token.
+
+
+.Schritte
+. Melden Sie sich beim SnapCenter Plug-in for VMware vSphere GUI an.
++
+Verwenden Sie das Format `\https://<OVA-IP-address>:8080` .
+
+. Wählen Sie das Symbol „Einstellungen“ in der oberen Symbolleiste.
++
+image:scpivs44_image10.png["SnapCenter -Plug-in für VMware vSphere-Schnittstelle"]
+
+. Wählen Sie auf der Seite *Einstellungen* im Abschnitt *Support* die Option *Support-Paket generieren* aus.
+. Nachdem das Support-Paket generiert wurde, wählen Sie den bereitgestellten Link aus, um das Paket auf NetApp herunterzuladen.
+

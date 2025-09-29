@@ -1,0 +1,39 @@
+---
+sidebar: sidebar 
+permalink: scpivs44_download_job_logs.html 
+keywords:  
+summary: Sie können die Jobprotokolle von der Registerkarte „Job Monitor“ im Dashboard des SnapCenter VMware vSphere-Clients herunterladen. 
+---
+= Jobprotokolle herunterladen
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Sie können die Jobprotokolle von der Registerkarte „Job Monitor“ im Dashboard des SnapCenter VMware vSphere-Clients herunterladen.
+
+Wenn bei der Verwendung des VMware vSphere-Clients unerwartetes Verhalten auftritt, können Sie die Protokolldateien verwenden, um die Ursache zu ermitteln und das Problem zu beheben.
+
+
+NOTE: Der Standardwert für die Aufbewahrung von Jobprotokollen beträgt 30 Tage; der Standardwert für die Aufbewahrung von Jobs beträgt 90 Tage.  Jobprotokolle und Jobs, die älter als die konfigurierte Aufbewahrungsdauer sind, werden alle sechs Stunden gelöscht.  Sie können die Konfiguration verwenden `jobs/cleanup` REST-APIs zum Ändern der Aufbewahrungsdauer von Jobs und Jobprotokollen.  Sie können den Bereinigungszeitplan nicht ändern.
+
+.Schritte
+. Wählen Sie auf der Verknüpfungsseite des vCenter-Clients das SnapCenter Plug-in for VMware vSphere (SCV) aus.
+. Wählen Sie im linken Navigationsbereich von SCV *Dashboard* > *Job Monitor*.
+. Wählen Sie das Download-Symbol in der Titelleiste des Job Monitors.
++
+Möglicherweise müssen Sie nach rechts scrollen, um das Symbol zu sehen.
+
++
+Sie können auch auf einen Job doppelklicken, um auf das Fenster „Jobdetails“ zuzugreifen, und dann „Jobprotokolle herunterladen“ auswählen.
+
+
+
+.Ergebnis
+Jobprotokolle befinden sich auf dem Linux-VM-Host, auf dem das SnapCenter Plug-in for VMware vSphere bereitgestellt wird.  Der Standardspeicherort des Jobprotokolls ist `/var/log/netapp` .
+
+Wenn Sie versucht haben, Jobprotokolle herunterzuladen, die in der Fehlermeldung genannte Protokolldatei jedoch gelöscht wurde, tritt möglicherweise der folgende Fehler auf: `HTTP ERROR 500 Problem accessing /export-scv-logs` .  Um diesen Fehler zu beheben, überprüfen Sie den Dateizugriffsstatus und die Berechtigungen für die in der Fehlermeldung genannte Datei und beheben Sie das Zugriffsproblem.

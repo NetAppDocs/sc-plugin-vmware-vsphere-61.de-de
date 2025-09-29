@@ -1,0 +1,19 @@
+---
+sidebar: sidebar 
+permalink: scpivs44_quick_start_overview.html 
+keywords:  
+summary: Die Schnellstartdokumentation enthält eine komprimierte Anleitung zum Bereitstellen des SnapCenter Plug-in for VMware vSphere Appliance und zum Aktivieren des SnapCenter Plug-in for VMware vSphere.  Diese Anweisungen richten sich an Kunden, die SnapCenter noch nicht installiert haben und nur VMs und Datenspeicher schützen möchten. 
+---
+= Überblick
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Die Schnellstartdokumentation enthält eine komprimierte Anleitung zum Bereitstellen des SnapCenter Plug-in for VMware vSphere Appliance und zum Aktivieren des SnapCenter Plug-in for VMware vSphere.  Diese Anweisungen richten sich an Kunden, die SnapCenter noch nicht installiert haben und nur VMs und Datenspeicher schützen möchten.
+
+Bevor Sie beginnen, lesen Sielink:scpivs44_deployment_planning_and_requirements.html["Bereitstellungsplanung und -anforderungen"] .

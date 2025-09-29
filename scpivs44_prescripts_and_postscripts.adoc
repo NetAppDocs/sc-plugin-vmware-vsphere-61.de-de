@@ -1,0 +1,169 @@
+---
+sidebar: sidebar 
+permalink: scpivs44_prescripts_and_postscripts.html 
+keywords:  
+summary: Sie können im Rahmen Ihrer Datenschutzmaßnahmen benutzerdefinierte Prescripts und Postscripts verwenden.  Diese Skripte ermöglichen die Automatisierung entweder vor oder nach Ihrem Datenschutzjob. 
+---
+= Präskripte und Postskripte
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Sie können im Rahmen Ihrer Datenschutzmaßnahmen benutzerdefinierte Prescripts und Postscripts verwenden.  Diese Skripte ermöglichen die Automatisierung entweder vor oder nach Ihrem Datenschutzjob.  Sie können beispielsweise ein Skript einbinden, das Sie automatisch über Fehler oder Warnungen bei Datenschutzaufträgen benachrichtigt.  Bevor Sie Ihre Präskripte und Postskripte einrichten, sollten Sie einige der Anforderungen zum Erstellen dieser Skripte verstehen.
+
+
+
+== Unterstützte Skripttypen
+
+Perl- und Shell-Skripte werden unterstützt.  Shell-Skripte müssen mit beginnen `!/bin/bash` . (`!/bin/sh` wird nicht unterstützt.)
+
+
+
+== Speicherort des Skriptpfads
+
+Prescripts und Postscripts werden vom SnapCenter Plug-in for VMware vSphere ausgeführt.  Daher müssen sich die Skripte mit Ausführungsberechtigungen im SnapCenter Plug-in for VMware vSphere OVA befinden.
+
+Zum Beispiel: * Ein PERL-Skriptpfad könnte sein `/support/support/script.pl` * Ein Shell-Skriptpfad könnte sein `/support/support/script.sh`
+
+Der Skriptpfad wird zum Zeitpunkt der Skriptausführung validiert.
+
+
+
+== Wo Skripte angegeben werden
+
+Skripte werden in Sicherungsrichtlinien angegeben. Wenn ein Sicherungsauftrag gestartet wird, verknüpft die Richtlinie das Skript automatisch mit den zu sichernden Ressourcen.
+
+Um mehrere Skripte anzugeben, drücken Sie nach jedem Skriptpfad die Eingabetaste, um jedes Skript in einer separaten Zeile aufzulisten.  Semikolons (;) sind nicht zulässig.  Sie können mehrere Präskripte und mehrere Postskripte angeben.  Ein einzelnes Skript kann sowohl als Präskript als auch als Postskript codiert werden und andere Skripte aufrufen.
+
+
+
+== Wenn Skripte ausgeführt werden
+
+Skripte werden entsprechend dem für BACKUP_PHASE festgelegten Wert ausgeführt.
+
+* BACKUP_PHASE=PRE_BACKUP
++
+Prescripts werden in der PRE_BACKUP-Phase des Vorgangs ausgeführt.
+
+
+
+
+NOTE: Wenn ein Prescript fehlschlägt, wird die Sicherung erfolgreich abgeschlossen und eine Warnmeldung gesendet.
+
+* BACKUP_PHASE=POST_BACKUP oder BACKUP_PHASE=FAILED_BACKUP
++
+Postscripts werden in der POST_BACKUP-Phase des Vorgangs ausgeführt, nachdem die Sicherung erfolgreich abgeschlossen wurde, oder in der FAILED_BACKUP-Phase, wenn die Sicherung nicht erfolgreich abgeschlossen wurde.
+
+
+
+
+NOTE: Wenn ein Postscript fehlschlägt, wird die Sicherung erfolgreich abgeschlossen und eine Warnmeldung gesendet.
+
+Überprüfen Sie Folgendes, um sicherzustellen, dass die Skriptwerte ausgefüllt sind: * Für PERL-Skripte: `/support/support/log_env.log` * Für Shell-Skripte: `/support/support/log_file.log`
+
+
+
+== An Skripte übergebene Umgebungsvariablen
+
+Sie können die in der folgenden Tabelle aufgeführten Umgebungsvariablen in Skripten verwenden.
+
+|===
+| Umgebungsvariable | Beschreibung 
+
+
+| `BACKUP_NAME` | Name der Sicherung.  Variable wird nur in Postskripten übergeben. 
+
+
+| `BACKUP_DATE` | Datum der Sicherung im Format `yyyymmdd` Variable wird nur in Postskripten übergeben. 
+
+
+| `BACKUP_TIME` | Zeitpunkt der Sicherung im Format `hhmmss` Variable wird nur in Postskripten übergeben. 
+
+
+| `BACKUP_PHASE` | Die Phase der Sicherung, in der das Skript ausgeführt werden soll.  Gültige Werte sind: `PRE_BACKUP, POST_BACKUP, and FAILED_BACKUP` .  In Präskripten und Postskripten übergebene Variable. 
+
+
+| `STORAGE_SNAPSHOTS` | Die Anzahl der Speicher-Snapshots im Backup.  Variable wird nur in Postskripten übergeben. 
+
+
+| `STORAGE_SNAPSHOT.#` | Einer der definierten Speicher-Snapshots im folgenden Format:
+`<filer>:/vol/<volume>:<ONTAP-snapshot-name>` Variable wird nur in Postskripten übergeben. 
+
+
+| `VIRTUAL_MACHINES` | Die Anzahl der VMs im Backup.  In Präskripten und Postskripten übergebene Variable. 
+
+
+| `VIRTUAL_MACHINE.#` | Eine der definierten virtuellen Maschinen im folgenden Format:
+`<VM name>[vertical bar]<VM UUID>[vertical bar]<power-state>[vertical bar]<VM snapshot>[vertical bar]<ip-addresses>
+<power-state> has the values POWERED_ON, POWERED_OFF, or
+SUSPENDED`
+`<VM snapshot>` hat die Werte `true` oder `false` In Präskripten und Postskripten übergebene Variable. 
+|===
+
+
+== Skript-Timeouts
+
+Das Timeout für Backup-Skripte beträgt 15 Minuten und kann nicht geändert werden.
+
+
+
+== Beispiel-PERL-Skript Nr. 1
+
+Das folgende Beispiel-PERL-Skript druckt die Umgebungsvariablen, wenn eine Sicherung ausgeführt wird.
+
+`#!/usr/bin/perl`
+`use warnings;`
+`use strict;`
+`my $argnum;`
+`my $logfile = '/support/support/log_env.log';`
+`open (FH, '>>', $logfile) or die $!;`
+`foreach (sort keys %ENV) {`
+`print FH "$_ = $ENV{$_}\n";`
+`}`
+`print FH "=========\n";`
+`close (FH);`
+
+
+
+== Beispiel-PERL-Skript Nr. 2
+
+Das folgende Beispiel gibt Informationen zur Sicherung aus.
+
+`#!/usr/bin/perl`
+`use warnings;`
+`use strict;`
+
+`my $argnum;`
+`my $logfile = '/support/support/log_env.log';`
+`open (FH, '>>', $logfile) or die $!;`
+
+`print FH "BACKUP_PHASE is $ENV{'BACKUP_PHASE'}\n";`
+`print FH "Backup name  $ENV{'BACKUP_NAME'}\n";`
+`print FH "Virtual Machine  $ENV{'VIRTUAL_MACHINES'}\n";`
+`print FH "VIRTUAL_MACHINE # is $ENV{'VIRTUAL_MACHINE.1'}\n";`
+`print FH "BACKUP_DATE is $ENV{'BACKUP_DATE'}\n";`
+`print FH "BACKUP_TIME is $ENV{'BACKUP_TIME'}\n";`
+`print FH "STORAGE_SNAPSHOTS is $ENV{'STORAGE_SNAPSHOTS'}\n";`
+`print FH "STORAGE_SNAPSHOT # is $ENV{'STORAGE_SNAPSHOT.1'}\n";`
+
+`print FH "PWD is $ENV{'PWD'}\n";`
+`print FH "INVOCATION_ID is $ENV{'INVOCATION_ID'}\n";`
+
+`print FH "=========\n";`
+`close (FH);`
+
+
+
+== Beispiel-Shell-Skript
+
+
+`===============================================`
+`#!/bin/bash`
+`echo Stage $BACKUP_NAME >> /support/support/log_file.log`
+`env >> /support/support/log_file.log`
+`===============================================`

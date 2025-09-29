@@ -1,0 +1,33 @@
+---
+sidebar: sidebar 
+permalink: scpivs44_view_vm_and_datastore_backups.html 
+keywords:  
+summary: Wenn Sie die Sicherung oder Wiederherstellung einer VM oder eines Datenspeichers vorbereiten, möchten Sie möglicherweise alle für diese Ressource verfügbaren Sicherungen und Details zu diesen Sicherungen anzeigen. 
+---
+= Anzeigen von VM- und Datenspeichersicherungen
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Wenn Sie die Sicherung oder Wiederherstellung einer VM oder eines Datenspeichers vorbereiten, möchten Sie möglicherweise alle für diese Ressource verfügbaren Sicherungen anzeigen und die Details dieser Sicherungen ansehen.
+
+.Informationen zu diesem Vorgang
+Das Durchsuchen großer Dateiordner, beispielsweise 10.000-Dateiordner, kann beim ersten Mal eine oder mehrere Minuten dauern.  Nachfolgende Browsersitzungen dauern weniger lang.
+
+.Schritte
+. Melden Sie sich beim vCenter Server an.
+. Navigieren Sie zur Seite *Inventar* und wählen Sie einen Datenspeicher oder eine VM aus.
+. Wählen Sie im rechten Bereich *Konfigurieren* > * SnapCenter Plug-in for VMware vSphere* > *Backups*.
++
+image:backup-view.png["Ansicht „Sicherungen“"]
+
++
+Wenn die Option *Sekundäre Snapshot-Sperre aktivieren* während der Richtlinienerstellungsphase nicht ausgewählt wird, wird standardmäßig der für die Option *Primäre Snapshot-Sperre aktivieren* festgelegte Wert verwendet.  In der Sicherungsliste zeigt der Bindestrich im Feld *Ablauf der sekundären Snapshot-Sperre* an, dass die Sperrzeiträume für die primäre und sekundäre Sperre identisch sind.
+
+. Wählen Sie das Backup aus, das Sie anzeigen möchten.
+

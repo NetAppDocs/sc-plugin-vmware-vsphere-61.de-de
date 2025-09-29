@@ -1,0 +1,44 @@
+---
+sidebar: sidebar 
+permalink: scpivs44_modify_the_time_zones.html 
+keywords:  
+summary: Wenn Sie einen Sicherungszeitplan für eine SnapCenter Plug-in for VMware vSphere Ressourcengruppe konfigurieren, wird der Zeitplan automatisch auf die Zeitzone eingestellt, in der das SnapCenter Plug-in for VMware vSphere bereitgestellt wird. Sie können diese Zeitzone mithilfe der Verwaltungs-GUI oder Wartungskonsole des SnapCenter Plug-in for VMware vSphere ändern. 
+---
+= Ändern der Zeitzonen für Backups
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+:firstname: [.lead]
+:author: [.lead]
+:authorinitials: [
+:authors: [.lead]
+:revnumber: 
+:revdate: the schedule is automatically set for the time zone in which SnapCenter Plug-in for VMware vSphere is deployed. You can modify that time zone by using the SnapCenter Plug-in for VMware vSphere management GUI or maintenance console.
+
+
+.Bevor Sie beginnen
+Sie müssen die IP-Adresse und die Anmeldeinformationen für das SnapCenter Plug-in for VMware vSphere Verwaltungs-GUI kennen. Sie müssen sich auch das von der Wartungskonsole generierte MFA-Token notieren.
+
+* Die IP-Adresse wurde angezeigt, als das SnapCenter Plug-in for VMware vSphere bereitgestellt wurde.
+* Verwenden Sie die Anmeldeinformationen, die Sie während der Bereitstellung des SnapCenter Plug-in for VMware vSphere erhalten haben oder die später geändert wurden.
+* Generieren Sie mithilfe der Systemkonfigurationsoptionen der Wartungskonsole ein 6-stelliges MFA-Token.
+
+
+.Schritte
+. Melden Sie sich beim SnapCenter Plug-in for VMware vSphere Verwaltungs-GUI an.
++
+Verwenden Sie das Format `\https://<appliance-IP-address>:8080`
+
+. Wählen Sie das Symbol „Einstellungen“ in der oberen Symbolleiste.
++
+image:scpivs44_image28.jpg["SnapCenter Plug-in for VMware vSphere"]
+
+. Wählen Sie auf der Seite *Einstellungen* im Abschnitt *Datum und Uhrzeit* die Option *Bearbeiten* aus.
+. Wählen Sie die neue Zeitzone aus und wählen Sie *Speichern*.
++
+Die neue Zeitzone wird für alle Sicherungen verwendet, die vom SnapCenter Plug-in for VMware vSphere durchgeführt werden.
+
+

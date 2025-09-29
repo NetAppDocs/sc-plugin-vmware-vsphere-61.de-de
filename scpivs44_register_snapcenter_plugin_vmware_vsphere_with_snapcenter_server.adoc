@@ -1,0 +1,68 @@
+---
+sidebar: sidebar 
+permalink: scpivs44_register_snapcenter_plugin_vmware_vsphere_with_snapcenter_server.html 
+keywords:  
+summary: 'Wenn Sie Application-over-VMDK-Workflows in SnapCenter ausführen möchten (anwendungsbasierte Schutz-Workflows für virtualisierte Datenbanken und Dateisysteme), müssen Sie das SnapCenter Plug-in for VMware vSphere beim SnapCenter Server registrieren.' 
+---
+= Registrieren Sie das SnapCenter Plug-in for VMware vSphere beim SnapCenter -Server
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Wenn Sie Application-over-VMDK-Workflows in SnapCenter ausführen möchten (anwendungsbasierte Schutz-Workflows für virtualisierte Datenbanken und Dateisysteme), müssen Sie das SnapCenter Plug-in for VMware vSphere beim SnapCenter Server registrieren.
+
+Wenn Sie ein SnapCenter -Benutzer sind und ein Upgrade auf SnapCenter 4.2 durchgeführt und Ihre Anwendungssicherungen über VMDK auf das SnapCenter Plug-in für VMware migriert haben, registriert der Migrationsbefehl das Plug-in automatisch.
+
+.Bevor Sie beginnen
+* Sie müssen SnapCenter Server 4.2 oder höher ausführen.
+* Sie müssen das SnapCenter Plug-in for VMware vSphere bereitgestellt und aktiviert haben.
+
+
+.Informationen zu diesem Vorgang
+* Sie registrieren das SnapCenter Plug-in for VMware vSphere beim SnapCenter -Server, indem Sie über die SnapCenter -GUI einen Host vom Typ „vsphere“ hinzufügen.
++
+Port 8144 ist für die Kommunikation innerhalb des SnapCenter Plug-in for VMware vSphere vordefiniert.
+
++
+Sie können mehrere Instanzen des SnapCenter Plug-in for VMware vSphere auf demselben SnapCenter Server 4.2 registrieren, um anwendungsbasierte Datenschutzvorgänge auf VMs zu unterstützen.  Sie können dasselbe SnapCenter Plug-in for VMware vSphere nicht auf mehreren SnapCenter Servern registrieren.
+
+* Für vCenter im verknüpften Modus müssen Sie das SnapCenter Plug-in for VMware vSphere für jedes vCenter registrieren.
+
+
+.Schritte
+. Wählen Sie im linken Navigationsbereich der SnapCenter -GUI *Hosts* aus.
+. Stellen Sie sicher, dass oben die Registerkarte *Verwaltete Hosts* ausgewählt ist, suchen Sie dann den Hostnamen der virtuellen Appliance und stellen Sie sicher, dass er vom SnapCenter -Server aufgelöst wird.
+. Wählen Sie *Hinzufügen*, um den Assistenten zu starten.
+. Geben Sie im Dialogfeld *Hosts hinzufügen* den Host an, den Sie dem SnapCenter -Server hinzufügen möchten, wie in der folgenden Tabelle aufgeführt:
++
+|===
+| Für dieses Feld… | Mach das… 
+
+
+| Hosttyp | Wählen Sie *vSphere* als Hosttyp aus. 
+
+
+| Hostname | Überprüfen Sie die IP-Adresse der virtuellen Appliance. 
+
+
+| Anmeldeinformationen | Geben Sie den Benutzernamen und das Kennwort für das SnapCenter Plug-in for VMware vSphere ein, das während der Bereitstellung bereitgestellt wurde. 
+|===
+. Wählen Sie *Senden*.
++
+Wenn der VM-Host erfolgreich hinzugefügt wurde, wird er auf der Registerkarte „Verwaltete Hosts“ angezeigt.
+
+. Wählen Sie im linken Navigationsbereich *Einstellungen*, dann die Registerkarte *Anmeldeinformationen* und anschließend *Hinzufügen* aus, um Anmeldeinformationen für die virtuelle Appliance hinzuzufügen.
+. Geben Sie die Anmeldeinformationen an, die während der Bereitstellung des SnapCenter Plug-in for VMware vSphere angegeben wurden.
++
+
+NOTE: Sie müssen im Feld „Authentifizierung“ Linux auswählen.
+
+
+
+.Nach Abschluss
+Wenn die Anmeldeinformationen des SnapCenter Plug-in for VMware vSphere geändert werden, müssen Sie die Registrierung im SnapCenter -Server über die Seite „SnapCenter Managed Hosts“ aktualisieren.

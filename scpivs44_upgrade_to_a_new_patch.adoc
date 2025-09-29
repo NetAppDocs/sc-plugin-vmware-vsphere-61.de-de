@@ -1,0 +1,40 @@
+---
+sidebar: sidebar 
+permalink: scpivs44_upgrade_to_a_new_patch.html 
+keywords:  
+summary: Wenn Sie auf einen neuen Patch derselben Version aktualisieren, müssen Sie den Cache des SnapCenter Plug-in for VMware vSphere auf dem vCenter-Webserver löschen und den Server vor dem Upgrade oder der Registrierung neu starten. 
+---
+= Upgrade auf einen neuen Patch der gleichen Version des SnapCenter Plug-in for VMware vSphere
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Wenn Sie auf einen neuen Patch derselben Version aktualisieren, müssen Sie den Cache des SnapCenter Plug-in for VMware vSphere auf dem vCenter-Webserver löschen und den Server vor dem Upgrade oder der Registrierung neu starten.
+
+Wenn der Plug-In-Cache nicht geleert wird, werden aktuelle Jobs in den folgenden Szenarien nicht im Dashboard und im Job-Monitor angezeigt:
+
+* Das SnapCenter Plug-in for VMware vSphere wurde mithilfe von vCenter bereitgestellt und später auf einen Patch in derselben Version aktualisiert.
+* Die virtuelle SnapCenter VMware-Appliance wurde in vCenter 1 bereitgestellt.  Später wurde dieses SnapCenter Plug-in for VMware vSphere bei einem neuen vCenter2 registriert.  Eine neue Instanz des SnapCenter Plug-in for VMware vSphere wird mit einem Patch erstellt und bei vCenter1 registriert.  Da vCenter1 jedoch noch über das zwischengespeicherte Plug-In vom ersten SnapCenter Plug-in for VMware vSphere ohne Patch verfügt, muss der Cache geleert werden.
+
+
+
+
+== Schritte zum Leeren des Caches
+
+. Suchen Sie die `vsphere-client-serenity` Ordner, und suchen Sie dann die `com.netapp.scv.client-<release-number>` Ordner und löschen Sie ihn.
++
+Der Ordnername ändert sich für jede Version.
+
++
+Den Speicherort des `vsphere-client-serenity` Ordner für Ihr Betriebssystem.
+
+. Starten Sie den vCenter Server neu.
++
+Anschließend können Sie das SnapCenter Plug-in for VMware vSphere aktualisieren.
+
+

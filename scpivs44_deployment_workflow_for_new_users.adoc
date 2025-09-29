@@ -1,0 +1,19 @@
+---
+sidebar: sidebar 
+permalink: scpivs44_deployment_workflow_for_new_users.html 
+keywords:  
+summary: Sie können diesen Workflow verwenden, wenn Sie SnapCenter noch nicht verwendet haben und keine SnapCenter Backups haben. 
+---
+= Bereitstellungsworkflow für neue Benutzer
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Wenn Sie SnapCenter noch nicht verwendet haben und keine SnapCenter -Backups haben, verwenden Sie für den Einstieg den folgenden Workflow.
+
+image:scpivs44_image2.png["Bereitstellungsworkflow für neue Benutzer"]

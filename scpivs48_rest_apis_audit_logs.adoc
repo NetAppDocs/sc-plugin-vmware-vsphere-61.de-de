@@ -1,0 +1,48 @@
+---
+sidebar: sidebar 
+permalink: scpivs48_rest_apis_audit_logs.html 
+keywords:  
+summary: REST-APIs zum Generieren von Audit-Protokollen 
+---
+= REST-APIs zum Generieren von Audit-Protokollen
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Sie können die Audit-Protokolldetails von Swagger-Rest-APIs sowie der Benutzeroberfläche des SCV-Plugins erfassen.
+
+Nachfolgend sind die Swagger-Rest-APIs aufgeführt:
+
+. GET 4.1/audit/logs: Prüfdaten für alle Protokolle abrufen
+. GET 4.1/audit/logs/{filename}: Prüfdaten für eine bestimmte Protokolldatei abrufen
+. POST 4.1/audit/verify: Überprüfung des Audit-Protokolls auslösen.
+. GET 4.1/audit/config: Ruft die Konfiguration des Audit- und Syslog-Servers ab
+. PUT 4.1/audit/config: Aktualisieren Sie die Audit- und Syslog-Serverkonfiguration
+
+
+Um Überwachungsprotokolle für VMware vSphere-Clientjobs mithilfe des SnapCenter Plug-in for VMware vSphere REST-APIs zu generieren, müssen Sie die REST-API-Aufrufe für VMware vSphere verwenden.
+
+Fügen Sie für jede REST-API hinzu `\https://<server>:<port>/api` an der Vorderseite der REST-API, um einen vollständigen Endpunkt zu bilden.
+
+Verwenden Sie die folgenden REST-APIs im Abschnitt „Jobs“, um detaillierte Informationen zu Jobs zu erhalten:
+
+|===
+| REST-API | Kommentare 
+
+
+| `4.1/audit/logs` | gibt Audit-Protokolldateien mit Integritätsdaten zurück 
+
+
+| `4.1/audit/logs/{filename}` | Erhalten Sie eine spezifische Audit-Protokolldatei mit Integritätsdaten 
+
+
+| `4.1/audit/verify` | löst Audit-Verifizierung aus 
+
+
+| `4.1/audit/syslogcert` | aktualisiert das Syslog-Server-Zertifikat 
+|===

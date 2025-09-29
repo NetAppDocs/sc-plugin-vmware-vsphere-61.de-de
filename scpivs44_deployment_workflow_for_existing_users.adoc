@@ -1,0 +1,19 @@
+---
+sidebar: sidebar 
+permalink: scpivs44_deployment_workflow_for_existing_users.html 
+keywords:  
+summary: Sie können diesen Workflow verwenden, wenn Sie ein SnapCenter Benutzer sind und über SnapCenter -Backups verfügen. 
+---
+= Bereitstellungsworkflow für vorhandene Benutzer
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Wenn Sie ein SnapCenter -Benutzer sind und über SnapCenter -Backups verfügen, verwenden Sie für den Einstieg den folgenden Workflow.
+
+image:scpivs44_image3.png["Bereitstellungsworkflow"]

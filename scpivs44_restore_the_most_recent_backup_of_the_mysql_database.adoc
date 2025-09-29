@@ -1,0 +1,31 @@
+---
+sidebar: sidebar 
+permalink: scpivs44_restore_the_most_recent_backup_of_the_mysql_database.html 
+keywords:  
+summary: 'Sie können die Wartungskonsole verwenden, um die neueste Sicherung der MySQL-Datenbank (auch NSM-Datenbank genannt) für das SnapCenter Plug-in for VMware vSphere wiederherzustellen.' 
+---
+= Stellen Sie die neueste Sicherung der MySQL-Datenbank wieder her
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Sie können die Wartungskonsole verwenden, um die neueste Sicherung der MySQL-Datenbank (auch NSM-Datenbank genannt) für das SnapCenter Plug-in for VMware vSphere wiederherzustellen.
+
+.Schritte
+. Öffnen Sie ein Wartungskonsolenfenster.
++
+link:scpivs44_access_the_maintenance_console.html["Zugriff auf die Wartungskonsole"^] .
+
+. Geben Sie im Hauptmenü die Option *1) Anwendungskonfiguration* ein.
+. Geben Sie im Anwendungskonfigurationsmenü die Option *6) MySQL-Sicherung und -Wiederherstellung* ein.
+. Geben Sie im Konfigurationsmenü für MySQL-Backup und -Wiederherstellung die Option *4) MySQL-Backup wiederherstellen* ein.
+. Geben Sie bei der Eingabeaufforderung „Mit der aktuellsten Sicherung wiederherstellen“ *y* ein und drücken Sie dann die *Eingabetaste*.
++
+Die MySQL-Datenbanksicherung wird an ihrem ursprünglichen Speicherort wiederhergestellt.
+
+

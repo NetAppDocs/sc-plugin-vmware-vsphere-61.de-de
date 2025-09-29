@@ -1,0 +1,28 @@
+---
+sidebar: sidebar 
+permalink: scpivs44_rest_apis_fail_stuck_jobs.html 
+keywords:  
+summary: Um Job-IDs für VMware vSphere-Clientjobs mithilfe des SnapCenter Plug-in for VMware vSphere REST-APIs zu finden, müssen Sie die REST-API-Aufrufe für VMware vSphere verwenden. 
+---
+= REST-API zum Markieren feststeckender Jobs als fehlgeschlagen
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Um Job-IDs für VMware vSphere-Clientjobs mithilfe des SnapCenter Plug-in for VMware vSphere REST-APIs zu finden, müssen Sie die REST-API-Aufrufe für VMware vSphere verwenden.  Diese REST-APIs wurden im SnapCenter Plug-in for VMware vSphere 4.4 hinzugefügt.
+
+Fügen Sie für jede REST-API „\https://<Server>:<Port>“ am Anfang der REST-API hinzu, um einen vollständigen Endpunkt zu bilden.
+
+Verwenden Sie die folgende REST-API im Abschnitt „Jobs“, um Jobs, die im laufenden Status feststecken, in einen fehlgeschlagenen Status zu ändern:
+
+|===
+| REST-API | Kommentare 
+
+
+| `/4.1/jobs/{id}/failJobs` | Wenn Sie die IDs von Jobs übergeben, die im laufenden Zustand hängen bleiben, `failJobs` markiert diese Jobs als fehlgeschlagen. Um Jobs zu identifizieren, die im laufenden Zustand hängen geblieben sind, verwenden Sie die GUI des Job-Monitors, um den Status jedes Jobs und die Job-ID anzuzeigen. 
+|===

@@ -1,0 +1,62 @@
+---
+sidebar: sidebar 
+permalink: scpivs44_rest_apis_overview.html 
+keywords:  
+summary: Sie können das SnapCenter Plug-in for VMware vSphere REST-APIs verwenden, um allgemeine Datenschutzvorgänge durchzuführen.  Das Plug-In verfügt über andere Swagger-Webseiten als die Windows SnapCenter Swagger-Webseiten. 
+---
+= Überblick
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Sie können das SnapCenter Plug-in for VMware vSphere REST-APIs verwenden, um allgemeine Datenschutzvorgänge durchzuführen.  Das Plug-In verfügt über andere Swagger-Webseiten als die Windows SnapCenter Swagger-Webseiten.
+
+* REST-API-Workflows sind für die folgenden Vorgänge auf VMs und Datenspeichern unter Verwendung der REST-APIs für VMware vSphere dokumentiert:
++
+** Hinzufügen, Ändern und Löschen von Speicher-VMs und -Clustern
+** Erstellen, Ändern und Löschen von Ressourcengruppen
+** Backup-VMs, geplant und auf Abruf
+** Vorhandene und gelöschte VMs wiederherstellen
+** VMDKs wiederherstellen
+** Anhängen und Trennen von VMDKs
+** Mounten und Unmounten von Datenspeichern
+** Jobs herunterladen und Berichte erstellen
+** Integrierte Zeitpläne ändern
+** Konfigurieren Sie den sekundären Schutz für ASA r2
+
+
+* Von den REST-APIs für VMware vSphere nicht unterstützte Vorgänge
++
+** Wiederherstellung der Gastdatei
+** Installation und Konfiguration des SnapCenter Plug-in for VMware vSphere
+** Zuweisen von RBAC-Rollen oder Zugriffsrechten an Benutzer
+
+
+* `uri`Parameter
++
+Der `uri` Der Parameter gibt immer einen „Null“-Wert zurück.
+
+* Anmeldezeitüberschreitung
++
+Das Standard-Timeout beträgt 120 Minuten (2 Stunden).  Sie können in den vCenter-Einstellungen einen anderen Timeout-Wert konfigurieren.
+
+* Token-Verwaltung
++
+Aus Sicherheitsgründen verwenden REST-APIs ein obligatorisches Token, das mit jeder Anforderung übergeben und in allen API-Aufrufen zur Clientvalidierung verwendet wird.  Die REST-APIs für VMware vSphere verwenden die VMware-Authentifizierungs-API, um das Token zu erhalten.  VMware stellt die Token-Verwaltung bereit.
+
++
+Um das Token zu erhalten, verwenden Sie `/4.1/auth/login` REST-API und geben Sie die vCenter-Anmeldeinformationen an.
+
+* API-Versionsbezeichnungen
++
+Jeder REST-API-Name enthält die SnapCenter -Versionsnummer, in der die REST-API erstmals veröffentlicht wurde.  Zum Beispiel die REST-API `/4.1/datastores/{moref}/backups` wurde erstmals in SnapCenter 4.1 veröffentlicht.
+
++
+REST-APIs in zukünftigen Versionen sind normalerweise abwärtskompatibel und werden bei Bedarf geändert, um neue Funktionen zu integrieren.
+
+

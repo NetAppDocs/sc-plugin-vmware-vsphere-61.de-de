@@ -1,0 +1,25 @@
+---
+sidebar: sidebar 
+permalink: scpivs44_create_resource_groups.html 
+keywords:  
+summary:  
+---
+= Erstellen von Ressourcengruppen
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Führen Sie die folgenden Schritte aus, um Ressourcengruppen zu erstellen.
+
+. Wählen Sie im linken Navigationsbereich des SCV-Plug-Ins *Ressourcengruppen* und dann *Erstellen* aus.
+. Geben Sie auf jeder Seite des Assistenten „Ressourcengruppe erstellen“ die erforderlichen Informationen ein, wählen Sie VMs und Datenspeicher aus, die in die Ressourcengruppe aufgenommen werden sollen, und wählen Sie dann die Sicherungsrichtlinien aus, die auf die Ressourcengruppe angewendet werden sollen.  Fügen Sie die Details zum sekundären Remoteschutz hinzu und geben Sie den Sicherungszeitplan an.
+
+
+Sicherungen werden gemäß den für die Ressourcengruppe konfigurierten Sicherungsrichtlinien durchgeführt.
+
+Sie können auf der Seite *Ressourcengruppen* eine Sicherung nach Bedarf durchführen, indem Sieimage:scpivs44_image38.png["Wiedergabesymbol"] *Jetzt ausführen*.

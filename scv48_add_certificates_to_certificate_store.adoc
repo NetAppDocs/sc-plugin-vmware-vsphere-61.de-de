@@ -1,0 +1,29 @@
+---
+sidebar: sidebar 
+permalink: scv48_add_certificates_to_certificate_store.html 
+keywords:  
+summary: Fügen Sie dem VMware vCenter die Stamm- und Zwischenzertifikate der Zertifizierungsstelle hinzu, um dem Zertifikat und den damit signierten Artefakten zu vertrauen. 
+---
+= Hinzufügen von Zertifikaten zum VMware-Zertifikatspeicher
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Fügen Sie vor der Installation der Open Virtual Appliance (OVA) das Zertifikat zum vCenter hinzu.  Die TAR-Datei enthält die OVA- und Entrust-Stamm- und Zwischenzertifikate. Die Zertifikate befinden sich im Zertifikatsordner.  Die OVA-Bereitstellung wird in VMware vCenter 7u1 und höher unterstützt.
+
+In VMware vCenter-Versionen ab 7.0.3 wird der mit dem Entrust-Zertifikat signierten OVA nicht mehr vertraut.  Sie müssen das folgende Verfahren durchführen, um das Problem zu beheben.
+
+.Schritte
+. Melden Sie sich mit dem vSphere-Client beim vCenter Server an.
+. Navigieren Sie zu *Administration > Zertifikate > Zertifikatsverwaltung*.
+. Wählen Sie neben *Trusted Root Store* die Option *Hinzufügen*
+. Durchsuchen Sie den Speicherort der Entrust-Stamm- und Zwischenzertifikate und wählen Sie ihn aus.  Das Zertifikat wird in einem Panel unter *Vertrauenswürdige Stammzertifikate* hinzugefügt. Sobald die Zertifikate installiert sind, kann OVA überprüft und bereitgestellt werden.
+
+
+
+NOTE: Wenn die heruntergeladene OVA-Datei nicht manipuliert wurde, wird in der Spalte *Herausgeber* *Vertrauenswürdiges Zertifikat* angezeigt.

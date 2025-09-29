@@ -1,0 +1,80 @@
+---
+sidebar: sidebar 
+permalink: scpivs44_restore_deleted_vms_from_backups.html 
+keywords:  
+summary: Sie können eine gelöschte VM aus einem primären oder sekundären Datastore-Backup auf einem von Ihnen ausgewählten ESXi-Host wiederherstellen. 
+---
+= Wiederherstellen gelöschter VMs aus Backups
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Sie können eine gelöschte VM aus einem primären oder sekundären Datastore-Backup auf einem von Ihnen ausgewählten ESXi-Host wiederherstellen.
+
+Sie können VMs an den folgenden Speicherorten wiederherstellen:
+
+* Am ursprünglichen Speicherort wiederherstellen
++
+** Zum ursprünglichen Datenspeicher, der auf dem ursprünglichen ESXi-Host gemountet ist (dadurch wird eine Kopie der VM erstellt)
+
+
+* An einem anderen Speicherort wiederherstellen
++
+** Zu einem anderen Datenspeicher, der auf dem ursprünglichen ESXi-Host gemountet ist
+** Zum ursprünglichen Datenspeicher, der auf einem anderen ESXi-Host bereitgestellt ist, der vom selben vCenter verwaltet wird
+** Zu einem anderen Datenspeicher, der auf einem anderen ESXi-Host bereitgestellt ist, der vom selben vCenter verwaltet wird
+** Zu einem anderen Datenspeicher, der auf einem anderen ESXi-Host bereitgestellt ist, der von einem anderen vCenter im verknüpften Modus verwaltet wird
+
+
+
+
+
+NOTE: Bei der Wiederherstellung an einem anderen Speicherort muss das SnapCenter Plug-in for VMware vSphere im verknüpften vCenter ausgeführt werden, das das Ziel für den Wiederherstellungsvorgang ist.  Der Zieldatenspeicher muss über ausreichend Speicherplatz verfügen.
+
+
+NOTE: Sie können vVol-VMs nicht an einem anderen Speicherort wiederherstellen.
+
+
+NOTE: Beim Wiederherstellen einer gelöschten VM werden alle Tags oder Ordner, die der VM ursprünglich zugewiesen waren, nicht wiederhergestellt.
+
+.Bevor Sie beginnen
+* Das Benutzerkonto für das Speichersystem auf der Seite „Speichersysteme“ im VMware vSphere-Client muss über dielink:scpivs44_minimum_ontap_privileges_required.html["Für ONTAP ONTAP Mindestberechtigungen"] .
+* Das Benutzerkonto in vCenter muss über dielink:scpivs44_minimum_vcenter_privileges_required.html["Für das SnapCenter Plug-in for VMware vSphere sind mindestens vCenter-Berechtigungen erforderlich"] .
+* Es muss ein Backup vorhanden sein.
++
+Sie müssen mit dem SnapCenter Plug-in for VMware vSphere eine Sicherung der VM erstellt haben, bevor Sie die VMDKs auf dieser VM wiederherstellen können.
+
+
+
+
+TIP: Aktivieren Sie die VMware-Anwendung vStorage API for Array Integration (VAAI), um die Leistung von Wiederherstellungsvorgängen in NFS-Umgebungen zu verbessern.
+
+.Informationen zu diesem Vorgang
+Sie können einen Datenspeicher nicht wiederherstellen, aber Sie können jede VM im Datenspeicher wiederherstellen.
+
+Ein Wiederherstellungsvorgang kann fehlschlagen, wenn die Speicherebene des FabricPool , in dem sich die VM befindet, nicht verfügbar ist.
+
+.Schritte
+. Navigieren Sie im vCenter Server zu *Inventar* > *Datenspeicher* und wählen Sie einen Datenspeicher aus.
+. Wählen Sie im Abschnitt „SnapCenter Plug-in for VMware vSphere“ die Option „Konfigurieren“ > „Backups“ aus.
+. Doppelklicken Sie auf ein Backup, um eine Liste aller VMs anzuzeigen, die im Backup enthalten sind.
+. Wählen Sie die gelöschte VM aus der Sicherungsliste aus und wählen Sie *Wiederherstellen*.
+. Wählen Sie im Assistenten *Wiederherstellen* auf der Seite *Sicherung auswählen* die Sicherungskopie aus, von der Sie wiederherstellen möchten.
++
+Sie können nach einem bestimmten Backup-Namen oder einem Teil des Backup-Namens suchen oder die Backup-Liste filtern, indem Sie das Filtersymbol auswählen und einen Datums- und Zeitbereich auswählen. Außerdem können Sie auswählen, ob Sie Backups mit VMware-Snapshots wünschen, ob Sie gemountete Backups wünschen und den Speicherort.  Wählen Sie *OK*, um zum Assistenten zurückzukehren.
+
+. Wählen Sie auf der Seite *Bereich auswählen* im Feld *Wiederherstellungsbereich* die Option *Gesamte virtuelle Maschine* aus, wählen Sie dann den Wiederherstellungsort aus und geben Sie dann die Informationen zum Ziel-ESXi-Host ein, auf dem die Sicherung bereitgestellt werden soll.
++
+Das Wiederherstellungsziel kann jeder ESXi-Host sein, der zu SnapCenter hinzugefügt wurde.  Diese Option stellt den Inhalt des ausgewählten Backups wieder her, in dem sich die VM befand, aus einem Snapshot mit der angegebenen Uhrzeit und dem angegebenen Datum.  Wenn Sie diese Option auswählen, ist das Kontrollkästchen *VM neu starten* aktiviert und die VM wird eingeschaltet.
+
++
+Wenn Sie eine VM in einem NFS-Datenspeicher auf einem alternativen ESXi-Host wiederherstellen, der sich in einem ESXi-Cluster befindet, wird die VM nach der Wiederherstellung auf dem alternativen Host registriert.
+
+. Wählen Sie auf der Seite *Speicherort auswählen* den Speicherort der Sicherung aus, von der Sie wiederherstellen möchten (primär oder sekundär).
+. Überprüfen Sie die Seite „Zusammenfassung“ und wählen Sie dann *Fertig*.
+

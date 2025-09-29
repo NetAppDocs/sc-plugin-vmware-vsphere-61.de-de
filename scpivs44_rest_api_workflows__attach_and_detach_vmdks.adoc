@@ -1,0 +1,65 @@
+---
+sidebar: sidebar 
+permalink: scpivs44_rest_api_workflows__attach_and_detach_vmdks.html 
+keywords:  
+summary: Um Anfüge- und Trennvorgänge für VMDKs mithilfe des SnapCenter Plug-in for VMware vSphere REST-APIs durchzuführen, müssen Sie die vorgeschriebene Reihenfolge der REST-API-Aufrufe einhalten. 
+---
+= REST-API-Workflows zum Anhängen und Trennen von VMDKs
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Um Anfüge- und Trennvorgänge für VMDKs mithilfe des SnapCenter Plug-in for VMware vSphere REST-APIs durchzuführen, müssen Sie die vorgeschriebene Reihenfolge der REST-API-Aufrufe einhalten.
+
+Fügen Sie für jede REST-API hinzu `\https://<server>:<port>` an der Vorderseite der REST-API, um einen vollständigen Endpunkt zu bilden.
+
+
+
+== Um VMDKs anzuhängen, folgen Sie diesem Workflow:
+
+|===
+| Schritt | REST-API | Kommentare 
+
+
+| 1 | Gehe zu `\http://<vCenter-IP>/mob` | Suchen Sie das VM-Moref in der VMware Managed Objects-URL.  Notieren Sie sich das *moref* für die VM, an die Sie ein VMDK anhängen möchten. 
+
+
+| 2 | `/4.1/vm/{moref}/backups` | `Get VM Backups`Ruft eine Liste der Sicherungen für die angegebene VM ab.  Übergeben Sie das *moref* aus Schritt 1.  Notieren Sie sich die *Backup-ID* des Backups, das Sie wiederherstellen möchten. 
+
+
+| 3 | `/4.1/vm/{moref}/backups/
+{backupId}/vmdklocations` | `Get VMDK Locations`Ruft eine Liste von VMDKs für die angegebene VM ab.  Übergeben Sie die *backupId* aus Schritt 2 und das *moref* aus Schritt 1.  Beachten Sie die Informationen *vmdkLocationsList*. 
+
+
+| 4 | `/4.1/vm/{moref}/attachvmdks`  a| 
+`Attach VMDKs`hängt das angegebene VMDK an die ursprüngliche VM an.  Übergeben Sie die *backupId* aus Schritt 2 und das *moref* aus Schritt 1.  Übergeben Sie die *vmdkLocationsList* aus Schritt 3 an das Attribut *vmdkLocations*.
+
+
+NOTE: Um ein VMDK an eine andere VM anzuhängen, übergeben Sie das Moref der Ziel-VM im Attribut alternateVmMoref.
+
+|===
+
+
+== Um VMDKs zu trennen, folgen Sie diesem Workflow:
+
+|===
+| Schritt | REST-API | Kommentare 
+
+
+| 1 | Gehe zu `\http://<vCenter-IP>/mob` | Suchen Sie das VM-Moref in der VMware Managed Objects-URL.  Beachten Sie das *moref* für die VM, von der Sie ein VMDK trennen möchten. 
+
+
+| 2 | `/4.1/vm/{moref}/backups` | `Get VM Backups`Ruft eine Liste der Sicherungen für die angegebene VM ab.  Übergeben Sie das *moref* aus Schritt 1.  Notieren Sie sich die *Backup-ID* des Backups, das Sie wiederherstellen möchten. 
+
+
+| 3 | `/4.1/vm/{moref}/backups/
+{backupId}/vmdklocations` | `Get VMDK Locations`Ruft eine Liste von VMDKs für die angegebene VM ab.  Übergeben Sie die *backupId* aus Schritt 2 und das *moref* aus Schritt 1.  Beachten Sie die Informationen *vmdkLocationsList*. 
+
+
+| 4 | `/4.1/vm/{moref}/detachvmdks` | `Detach VMDKs`trennt das angegebene VMDK.  Übergeben Sie das *moref* aus Schritt 1.  Übergeben Sie die VMDK-Details *vmdkLocationsList* aus Schritt 3 an das Attribut *vmdksToDetach*. 
+|===

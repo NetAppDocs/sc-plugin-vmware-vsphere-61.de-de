@@ -1,0 +1,50 @@
+---
+sidebar: sidebar 
+permalink: scpivs44_set_up_proxy_vms_for_restore_operations.html 
+keywords:  
+summary: Wenn Sie eine Proxy-VM zum Anhängen einer virtuellen Festplatte für Dateiwiederherstellungsvorgänge des Gasts verwenden möchten, müssen Sie die Proxy-VM einrichten, bevor Sie mit dem Wiederherstellungsvorgang beginnen.  Obwohl Sie jederzeit eine Proxy-VM einrichten können, ist es möglicherweise bequemer, sie unmittelbar nach Abschluss der Plug-In-Bereitstellung einzurichten. 
+---
+= Einrichten von Proxy-VMs für Wiederherstellungsvorgänge
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Wenn Sie eine Proxy-VM zum Anhängen einer virtuellen Festplatte für Dateiwiederherstellungsvorgänge des Gasts verwenden möchten, müssen Sie die Proxy-VM einrichten, bevor Sie mit dem Wiederherstellungsvorgang beginnen.  Obwohl Sie jederzeit eine Proxy-VM einrichten können, ist es möglicherweise bequemer, sie unmittelbar nach Abschluss der Plug-In-Bereitstellung einzurichten.
+
+.Schritte
+. Wählen Sie im Verknüpfungsfenster des vSphere-Clients unter Plug-Ins * SnapCenter Plug-in for VMware vSphere* aus.
+. Wählen Sie in der linken Navigation *Guest File Restore* aus.
+. Führen Sie im Abschnitt „Anmeldeinformationen für „Ausführen als““ einen der folgenden Schritte aus:
++
+|===
+| Um dies zu tun… | Mach das… 
+
+
+| Vorhandene Anmeldeinformationen verwenden | Wählen Sie eine der konfigurierten Anmeldeinformationen aus. 
+
+
+| Neue Anmeldeinformationen hinzufügen  a| 
+.. Wählen Sie *Hinzufügen*.
+.. Geben Sie im Dialogfeld *Anmeldeinformationen für „Ausführen als“* die Anmeldeinformationen ein.
+.. Wählen Sie *VM auswählen* und wählen Sie dann im Dialogfeld *Proxy-VM* eine VM aus.  Wählen Sie *Speichern*, um zum Dialogfeld *Anmeldeinformationen für „Ausführen als“* zurückzukehren.
+.. Geben Sie die Anmeldeinformationen ein. Als Benutzernamen müssen Sie „Administrator“ eingeben.
+
+
+|===
++
+Das SnapCenter Plug-in for VMware vSphere verwendet die ausgewählten Anmeldeinformationen, um sich bei der ausgewählten Proxy-VM anzumelden.
+
++
+Die Anmeldeinformationen für „Ausführen als“ müssen dem von Windows bereitgestellten Standarddomänenadministrator oder dem integrierten lokalen Administrator entsprechen.  Arbeitsgruppenbenutzer können das integrierte lokale Administratorkonto verwenden.
+
+. Wählen Sie im Abschnitt *Proxy-Anmeldeinformationen* die Option *Hinzufügen* aus, um eine VM zur Verwendung als Proxy hinzuzufügen.
+. Vervollständigen Sie im Dialogfeld *Proxy-VM* die Informationen und wählen Sie dann *Speichern*.
+
+
+
+NOTE: Sie müssen die Proxy-VM aus dem SnapCenter Plug-in for VMware vSphere Benutzeroberfläche löschen, bevor Sie sie vom ESXi-Host löschen können.

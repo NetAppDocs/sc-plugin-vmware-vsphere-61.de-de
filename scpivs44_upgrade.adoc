@@ -1,0 +1,95 @@
+---
+sidebar: sidebar 
+permalink: scpivs44_upgrade.html 
+keywords:  
+summary: Wenn Sie das SnapCenter Plug-in for VMware vSphere Appliance verwenden, können Sie auf eine neuere Version aktualisieren. 
+---
+= Upgrade von einer früheren Version des SnapCenter Plug-in for VMware vSphere
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+
+NOTE: Das Upgrade auf SCV 6.1 wird nur auf VMware vCenter Server 7 Update 1 und späteren Versionen unterstützt. Für VMware vCenter Server vor Version 7 Update 1 sollten Sie weiterhin SCV 4.7 verwenden. Das Upgrade führt bei nicht unterstützten Versionen des VMware vCenter-Servers zu Unterbrechungen.
+
+Wenn Sie das SnapCenter Plug-in for VMware vSphere Appliance verwenden, können Sie auf eine neuere Version aktualisieren.  Der Upgrade-Prozess hebt die Registrierung des vorhandenen Plug-Ins auf und stellt ein Plug-In bereit, das nur mit vSphere 7.0U1 und späteren Versionen kompatibel ist.
+
+
+
+== Upgrade-Pfade
+
+|===
+
+
+| Wenn Sie die Version des SnapCenter Plug-in for VMware vSphere (SCV) verwenden ... | Sie können das SnapCenter Plug-in for VMware vSphere direkt aktualisieren auf ... 
+
+
+| SCV 6,0 | Upgrade auf SCV 6.1 
+
+
+| SCV 5,0 | Upgrade auf SCV 6.0 und SCV 6.1 
+
+
+| SCV 4,9 | Upgrade auf SCV 5.0 und SCV 6.0 
+
+
+| SCV 4,8 | Upgrade auf SCV 4.9 und SCV 5.0 
+
+
+| SCV 4,7 | Upgrade auf SCV 4.8 und SCV 4.9 
+
+
+| SCV 4,6 | Upgrade auf SCV 4.7 und SCV 4.8 
+|===
+
+TIP: Sichern Sie das SnapCenter Plug-in for VMware vSphere OVA, bevor Sie ein Upgrade starten.
+
+
+NOTE: Das Umstellen Ihrer Netzwerkkonfiguration von statisch auf DHCP wird nicht unterstützt.
+
+Aktuelle Informationen zu unterstützten Versionen finden Sie unter https://imt.netapp.com/matrix/imt.jsp?components=134348;&solution=1517&isHWU&src=IMT["NetApp Interoperabilitätsmatrix-Tool"^] (IMT).
+
+.Schritte
+. Bereiten Sie das Upgrade vor, indem Sie das SnapCenter Plug-in for VMware vSphere deaktivieren.
++
+.. Melden Sie sich beim SnapCenter Plug-in for VMware vSphere Verwaltungs-GUI an. Die IP-Adresse wird angezeigt, wenn Sie das SnapCenter Plug-in for VMware vSphere bereitstellen.
+.. Wählen Sie im linken Navigationsbereich *Konfiguration* und dann im Abschnitt „Plug-in-Details“ die Option *Dienst*, um das Plug-in zu deaktivieren.
+
+
+. Herunterladen des Upgrades `.iso` Datei.
++
+.. Melden Sie sich bei der NetApp Support Site an(https://mysupport.netapp.com/products/index.html[] ).
+.. Wählen Sie aus der Produktliste * SnapCenter Plug-in for VMware vSphere* und dann die Schaltfläche *NEUESTE VERSION HERUNTERLADEN*.
+.. Laden Sie das SnapCenter Plug-in for VMware vSphere Upgrade herunter `.iso` Datei an einen beliebigen Ort.
+
+
+. Installieren Sie das Upgrade.
++
+.. Navigieren Sie in Ihrem Browser zum VMware vSphere vCenter.
+.. Wählen Sie in der vCenter-GUI *vSphere-Client (HTML)* aus.
+.. Melden Sie sich auf der Seite *VMware vCenter Single Sign-On* an.
+.. Wählen Sie im Navigationsbereich die VM aus, die Sie aktualisieren möchten, und wählen Sie dann die Registerkarte *Zusammenfassung* aus.
+.. Wählen Sie im Bereich *Verwandte Objekte* einen beliebigen Datenspeicher in der Liste aus und wählen Sie dann die Registerkarte *Zusammenfassung*.
+.. Wählen Sie auf der Registerkarte *Dateien* für den ausgewählten Datenspeicher einen beliebigen Ordner in der Liste aus und wählen Sie dann *Dateien hochladen*.
+.. Navigieren Sie im Upload-Popup-Bildschirm zu dem Speicherort, an dem Sie die `.iso` Datei, wählen Sie dann auf der `.iso` Dateibild und wählen Sie dann *Öffnen*.  Die Datei wird in den Datenspeicher hochgeladen.
+.. Navigieren Sie zurück zur VM, die Sie aktualisieren möchten, und wählen Sie die Registerkarte *Zusammenfassung* aus.  Im Bereich *VM-Hardware* sollte im Feld CD/DVD der Wert „Getrennt“ lauten.
+.. Wählen Sie das Verbindungssymbol im CD/DVD-Feld und wählen Sie *Mit CD/DVD-Image auf einem Datenspeicher verbinden*.
++
+image:scpivs44_image42.png["vCenter-Benutzeroberfläche"]
+
+.. Führen Sie im Assistenten die folgenden Schritte aus:
++
+... Wählen Sie in der Spalte „Datenspeicher“ den Datenspeicher aus, in den Sie die `.iso` Datei.
+... Navigieren Sie in der Spalte Inhalt zu `.iso` Stellen Sie sicher, dass im Feld „Dateityp“ die Option „ISO-Image“ ausgewählt ist, und wählen Sie dann *OK* aus.  Warten Sie, bis im Feld der Status „Verbunden“ angezeigt wird.
+
+
+.. Melden Sie sich bei der Wartungskonsole an, indem Sie auf die Registerkarte *Zusammenfassung* der virtuellen Appliance zugreifen und dann den grünen Ausführungspfeil auswählen, um die Wartungskonsole zu starten.
+.. Geben Sie *2* für die Systemkonfiguration und dann *8* für das Upgrade ein.
+.. Geben Sie *y* ein, um fortzufahren und das Upgrade zu starten.
+
+
+
