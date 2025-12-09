@@ -152,9 +152,6 @@ Die Mindestsoftwareanforderungen für die Unterstützung der Protokolle NVMe ove
 
 
 | Mindestfestplattenspeicherplatz für das SnapCenter Plug-in for VMware vSphere, Protokolle und MySQL-Datenbank | 100 GB 
-
-
-| Maximale Heap-Größe des vmcontrol-Dienstes in der Appliance | 8 GB 
 |===
 
 
